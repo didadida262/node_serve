@@ -6,6 +6,8 @@ const qs = require('querystring');
 const cors = require('cors');
 server.use(cors());
 
+server.use(express.urlencoded({extended: false})); // 现在就方便多了，express的两个方法一执行就行啦
+server.use(express.json());
 const User = require('./models/User');
 
 server.get('/users',function(req,res){
@@ -49,6 +51,10 @@ server.get('/word', (request, response) => {
   response.json('百般乐器，唢呐为王，不是升天，就是拜堂')
 })
 
+server.post('/signIn', (req, resp) => {
+  console.log('req.body:', JSON.stringify(req.body));
+  resp.send(req.body);
+})
 //Binding to localhost://3000
 server.listen(3000,()=>{
  console.log('Express server started at port 3000');
