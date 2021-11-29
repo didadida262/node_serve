@@ -4,13 +4,14 @@ const dirs = fs.readdirSync('./')
 // console.log('dirs:', dirs)
 
 // 异步读取
-// fs.readdir('./', (err, data) => {
+// fs.readdir('../', (err, data) => {
 //     if (err) {
 //         console.log('path error:', err)
 //     } else {
 //         console.log('dir:', data)
 //     }
 // })
+
 // 创建文件夹
 // fs.mkdir('./ttt', (err) => {
 //     if (err) {
@@ -48,14 +49,36 @@ const dirs = fs.readdirSync('./')
 // })
 
 // 判断文件类型
-fs.stat('./fs.js', (err, stats) => {
-    if (err) {
-        console.log('err!', err)
+// fs.stat(fileName, (err, stats) => {
+//     if (err) {
+//         console.log('err!', err)
+//     } else {
+//         if (stats.isFile()) {
+//             // console.log('Is File')
+//             return false
+//         } else {
+//             console.log('Is Dir')
+//             return true
+//         }
+//     }
+// })
+
+// 同步判断文件类型
+const judeFile = (filname) => {
+    const file = fs.statSync(filname)
+    if(file.isFile()) {
+        return true
     } else {
-        if (stats.isFile()) {
-            console.log('Is File')
-        } else {
-            console.log('Is Dir')
-        }
+        return false
     }
-})
+}
+
+// 打印当前目录开始的所有子目录
+const res = []
+const children = (path, res) => {
+    const dirs = fs.readdirSync(path)
+    res.push(...dirs)
+    return res
+}
+children('./', res)
+console.log('res:', res)
