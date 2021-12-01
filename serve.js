@@ -6,12 +6,11 @@ const qs = require('querystring');
 const cors = require('cors');
 server.use(cors());
 
-server.use(express.urlencoded({extended: false})); // 现在就方便多了，express的两个方法一执行就行啦
+server.use(express.urlencoded({ extended: false }));
 server.use(express.json());
 const User = require('./models/User');
 
-server.get('/users',function(req,res){
-  // var userid = req.params.userid;
+server.get('/users',function(req, res){
   var params = qs.parse(req.url.split('?')[1]);
   var fn = params.callback;
   console.log('fn:', fn)
@@ -44,7 +43,7 @@ server.get('/',(request,response)=>{
 });
 
 server.get('/users',(request,response)=>{
- response.json(users);
+  response.json(users);
 });
 
 server.get('/word', (request, response) => {
