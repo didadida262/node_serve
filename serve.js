@@ -50,9 +50,10 @@ server.get('/word', (request, response) => {
   response.json('百般乐器，唢呐为王，不是升天，就是拜堂')
 })
 
-server.post('/signIn', (req, resp) => {
+server.post('/signIn', (req, res) => {
   console.log('req.body:', JSON.stringify(req.body));
-  resp.send(req.body);
+  res.send('123');
+  // res.send(req.body);
 })
 //Binding to localhost://3000
 server.listen(3000,()=>{

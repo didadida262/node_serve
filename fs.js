@@ -73,7 +73,7 @@ const judeFile = (filname) => {
     }
 }
 
-// 打印当前目录开始的所有子目录
+// 打印当前目录开始的所有儿子(不包括孙子,重孙....)
 const res = []
 const children = (path, res) => {
     const dirs = fs.readdirSync(path)
@@ -81,4 +81,7 @@ const children = (path, res) => {
     return res
 }
 children('./', res)
-console.log('res:', res)
+for (const item of res) {
+    console.log(item)
+    console.log('----->', judeFile(item))
+}
