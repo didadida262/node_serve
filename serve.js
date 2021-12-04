@@ -75,6 +75,17 @@ app.get('/img', (req, res) => {
     }
   })
 })
+app.get('/music', (req, res) => {
+  fs.readFile('./media/Novera.mp3', 'binary', (err, data) => {
+    if(err) {
+      throw err
+    } else {
+      res.write(data, 'binary')
+      res.end()
+    }
+  })
+  
+})
 app.post('/upload', (req, res) => {
   console.log('upload!')
   console.log('req.headers:', req.headers)
