@@ -4,7 +4,6 @@ const express = require('express'),
       users = require('./users');
 const qs = require('querystring');
 const cors = require('cors');
-// const { createProxyMiddleware } = require('http-proxy-middleware')
 
 server.use(cors());
 server.use(express.urlencoded({ extended: false }));
