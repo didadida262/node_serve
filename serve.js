@@ -4,6 +4,7 @@ const express = require('express'),
       users = require('./users');
 const qs = require('querystring');
 const cors = require('cors');
+const { crp } = require('./tools')
 
 server.use(cors());
 server.use(express.urlencoded({ extended: false }));
@@ -55,8 +56,9 @@ server.get('/word', (request, response) => {
 })
 
 server.post('/signIn', (req, res) => {
-  console.log('req.body:', JSON.stringify(req.body));
-  res.send(req.body);
+  console.log('req.body:', req.body);
+  const token = crp(req.body)
+  res.send(token);
 })
 
 
