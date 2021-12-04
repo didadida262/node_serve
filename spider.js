@@ -1,10 +1,19 @@
 const https = require('https')
-https.get('https://gtv.org/video/id=617be96f11d1862968fccc4b', (res) => {
-    let str = ''
-    res.on('data', (chunk) => {
-        str += chunk
+const http = require('http')
+
+const serve = http.createServer((req, res) => {
+    let data = ''
+    https.get('https://gtv.org/video/id=61a3828b44c1fe7a6c3aaf29', (res) => {
+        res.on('data', (chunk) => {
+            data += chunk
+        })
+        res.on('end', () => {
+            console.log('data:', data)
+            console.log('数据完全结束')
+        })
     })
-    res.on('end', () => {
-        console.log('str:', str)
-    })
+})
+
+serve.listen(3001, () => {
+  console.log('3001已启动！')  
 })

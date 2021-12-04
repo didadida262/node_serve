@@ -4,10 +4,15 @@ const express = require('express'),
       users = require('./users');
 const qs = require('querystring');
 const cors = require('cors');
-server.use(cors());
+// const { createProxyMiddleware } = require('http-proxy-middleware')
 
+server.use(cors());
 server.use(express.urlencoded({ extended: false }));
 server.use(express.json());
+
+
+
+
 const User = require('./models/User');
 
 server.get('/users',function(req, res){
@@ -52,10 +57,13 @@ server.get('/word', (request, response) => {
 
 server.post('/signIn', (req, res) => {
   console.log('req.body:', JSON.stringify(req.body));
-  res.send('123');
-  // res.send(req.body);
+  res.send(req.body);
 })
+
+
 //Binding to localhost://3000
 server.listen(3000,()=>{
  console.log('Express server started at port 3000');
 });
+
+
