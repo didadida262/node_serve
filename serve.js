@@ -17,7 +17,6 @@ app.use(express.json());
 
 
 const User = require('./models/User');
-const { fstat } = require('fs');
 
 app.get('/users',function(req, res){
   var params = qs.parse(req.url.split('?')[1]);
@@ -55,14 +54,19 @@ app.get('/users',(request,response)=>{
   response.json(users);
 });
 
-app.get('/word', (request, response) => {
-  response.json('百般乐器，唢呐为王，不是升天，就是拜堂')
+app.get('/word', (req, res) => {
+  res.send({
+    words: '百般乐器，唢呐为王，不是升天，就是拜堂'
+  })
 })
 
 app.post('/signIn', (req, res) => {
-  console.log('req.body:', req.body);
   const token = crp(req.body)
-  res.send(token);
+  const data = {
+    userInfo: req.body,
+    token: token
+  }
+  res.send(data);
 })
 
 app.get('/img', (req, res) => {
@@ -110,7 +114,7 @@ app.post('/upload', (req, res) => {
   return req.pipe(busboy);
 })
 //Binding to localhost://3000
-app.listen(3000,()=>{
+app.listen(3000,() => {
  console.log('Express app started at port 3000');
 });
 

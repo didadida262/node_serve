@@ -2,7 +2,7 @@ const crypto = require('crypto')
 
 // 用户信息加密处理
 const crp = (userInfo) => {
-    const userInfoStr = userInfo.name + userInfo.password
+    const userInfoStr = userInfo.userName + userInfo.password
     const hash = crypto
         .createHash('sha1')
         .update(userInfoStr)
