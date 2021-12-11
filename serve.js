@@ -6,7 +6,7 @@ const express = require('express'),
       users = require('./users');
 const qs = require('querystring');
 const cors = require('cors');
-const { crp } = require('./tools')
+const { crp, secretA } = require('./tools')
 const Busboy = require('busboy')
 
 app.use(cors());
@@ -61,7 +61,8 @@ app.get('/word', (req, res) => {
 })
 
 app.post('/signIn', (req, res) => {
-  const token = crp(req.body)
+  console.log('req.body', req.body)
+  const token = secretA(req.body)
   const data = {
     userInfo: req.body,
     token: token
