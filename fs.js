@@ -1,16 +1,18 @@
 const fs = require('fs')
-// 同步读取
-const dirs = fs.readdirSync('./')
-// console.log('dirs:', dirs)
+const path = require('path')
+// // 同步读取
+// const dirs = fs.readdirSync('./')
 
-// 异步读取
-// fs.readdir('../', (err, data) => {
+// // 异步读取
+// fs.readdir('./', (err, data) => {
 //     if (err) {
 //         console.log('path error:', err)
 //     } else {
 //         console.log('dir:', data)
 //     }
 // })
+// console.log('--->')
+
 
 // 创建文件夹
 // fs.mkdir('./ttt', (err) => {
@@ -63,6 +65,10 @@ const dirs = fs.readdirSync('./')
 //     }
 // })
 
+
+
+// --->文件扫描器
+
 // 同步判断文件类型
 const judeFile = (filname) => {
     const file = fs.statSync(filname)
@@ -72,16 +78,33 @@ const judeFile = (filname) => {
         return false
     }
 }
-
+// 判断文件乞丐版
+const jude = (filename) => {
+    return filename.indexOf('.') === -1? false: true
+}
+const p = path.resolve(__dirname)
 // 打印当前目录开始的所有儿子(不包括孙子,重孙....)
 const res = []
-const children = (path, res) => {
+const f = (path) => {
     const dirs = fs.readdirSync(path)
-    res.push(...dirs)
-    return res
+    console.log('当前所有子文件:', dirs)
+    console.log('---->')
+    const r = []
+    for (const item of dirs) {
+        console.log('走了谁：', item)
+        const c = {}
+        if (jude(item)) {
+            c[item] = "$"
+        } else {
+            if (path == './') {
+                c[item] = f(path + item)
+            } else {
+                c[item] = f(path + '/' + item)
+            }
+        }
+        r.push(c)
+    }
+    return r
 }
-children('./', res)
-for (const item of res) {
-    console.log(item)
-    console.log('----->', judeFile(item))
-}
+res.push(f('./'))
+console.log('res:', res)
