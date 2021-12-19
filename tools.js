@@ -18,6 +18,12 @@ const secretA = (userInfo) => {
 }
 
 // 非对成加密
+let count = 0
+const add = (num1, num2) => {
+    conut = num1 + num2
+}
 
 module.exports.crp = crp
 module.exports.secretA = secretA
+module.exports.add = add
+module.exports.count = count

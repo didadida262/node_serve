@@ -87,24 +87,18 @@ const p = path.resolve(__dirname)
 const res = []
 const f = (path) => {
     const dirs = fs.readdirSync(path)
-    console.log('当前所有子文件:', dirs)
-    console.log('---->')
     const r = []
     for (const item of dirs) {
-        console.log('走了谁：', item)
         const c = {}
-        if (jude(item)) {
+        const cPath = path == './'? path + item: path + '/' + item
+        if (judeFile(cPath)) {
             c[item] = "$"
         } else {
-            if (path == './') {
-                c[item] = f(path + item)
-            } else {
-                c[item] = f(path + '/' + item)
-            }
+            c[item] = f(cPath)
         }
         r.push(c)
     }
     return r
 }
-res.push(f('./'))
-console.log('res:', res)
+res.push(...f('./'))
+console.log('res:', res[2])
