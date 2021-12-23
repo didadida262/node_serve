@@ -1,4 +1,5 @@
 //app.js
+const Blob = require('blob-polyfill')
 const path = require('path')
 const fs = require('fs')
 const express = require('express'),
@@ -113,6 +114,28 @@ app.post('/upload', (req, res) => {
   });
 
   return req.pipe(busboy);
+})
+app.post('/sendImg', (req, res) => {
+  // console.log('反馈:', req.body)
+  // var bitmap = new Buffer(req.body, 'base64');
+  // fs.writeFileSync(file, bitmap);
+  console.log('--->', req.body.imgDate)
+  const unitArr = []
+  const url = req.body.imgDate
+  let n = req.body.imgDate.length
+  for (let i = 0; i < n; i++) {
+    unitArr[i] = url.charCodeAt(i)
+  }
+  console.log('unitArr:', unitArr)
+  console.log(new Blob([unitArr], { type: 'image/jpeg' })) 
+  const decode = Buffer.from(req.body.imgDate , 'base64')
+  fs.writeFile('./test.jpg', decode, (err) => {
+    if (err) {
+      console.log('error!!!')
+    } else {
+      console.log('写文件成功！！')
+    }
+  })
 })
 //Binding to localhost://3000
 app.listen(3000,() => {
