@@ -127,7 +127,7 @@ app.post('/sendImg', (req, res) => {
     unitArr[i] = url.charCodeAt(i)
   }
   console.log('unitArr:', unitArr)
-  console.log(new Blob([unitArr], { type: 'image/jpeg' })) 
+  console.log(new Blob([unitArr], { type: 'image/jpeg' }))
   const decode = Buffer.from(req.body.imgDate , 'base64')
   fs.writeFile('./test.jpg', decode, (err) => {
     if (err) {
