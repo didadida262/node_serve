@@ -55,9 +55,15 @@ app.get('/users',(req,res)=>{
   res.json(users);
 });
 
-app.get('/word', (req, res) => {
+app.get('/getInfo', (req, res) => {
+  console.log('客户端的token---->', req)
   res.send({
-    words: '百般乐器，唢呐为王，不是升天，就是拜堂'
+    code: 20000,
+    data: {
+      word: '百般乐器，唢呐为王，不是升天，就是拜堂',
+      name: 'hhvcg',
+      avatar: '',
+    }
   })
 })
 
@@ -65,8 +71,9 @@ app.post('/signIn', (req, res) => {
   console.log('req.body', req.body)
   const token = secretA(req.body)
   const data = {
-    userInfo: req.body,
-    token: token
+    data: req.body,
+    token: token,
+    code: 20000
   }
   res.send(data);
 })
