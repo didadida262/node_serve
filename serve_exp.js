@@ -68,7 +68,6 @@ app.get('/getInfo', (req, res) => {
 })
 
 app.post('/signIn', (req, res) => {
-  console.log('req.body', req.body)
   const token = secretA(req.body)
   const data = {
     data: req.body,
