@@ -9,10 +9,13 @@ const qs = require('querystring');
 const cors = require('cors');
 const { crp, secretA } = require('./tools')
 const Busboy = require('busboy')
+const mediaPath = './media/'
+const songs = ['小姐.mp3', '诚如神之所说.mp3', 'Novera.mp3']
 
 app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+
 
 
 
@@ -22,7 +25,7 @@ const User = require('./models/User');
 app.get('/users',function(req, res){
   var params = qs.parse(req.url.split('?')[1]);
   var fn = params.callback;
-  console.log('fn:', fn)
+  // console.log('fn:', fn)
   var userid = 1;
   var user = new User();
   user.find(userid,function(err,result){
@@ -56,7 +59,7 @@ app.get('/users',(req,res)=>{
 });
 
 app.get('/getInfo', (req, res) => {
-  console.log('客户端的token---->', req)
+  // console.log('客户端的token---->', req)
   res.send({
     code: 20000,
     data: {
@@ -96,11 +99,11 @@ app.post('/logout', (req, res) => {
   })
 })
 app.get('/music', (req, res) => {
-  fs.readFile('./media/小姐.mp3', 'binary', (err, data) => {
+  console.log('req----->',req.query.index)
+  fs.readFile(mediaPath + songs[req.query.index], 'binary', (err, data) => {
     if(err) {
       throw err
     } else {
-      // console.log('data--->', data)
       res.write(data, 'binary')
       res.end()
     }
@@ -131,24 +134,24 @@ app.post('/upload', (req, res) => {
   return req.pipe(busboy);
 })
 app.post('/sendImg', (req, res) => {
-  // console.log('反馈:', req.body)
+  // // console.log('反馈:', req.body)
   // var bitmap = new Buffer(req.body, 'base64');
   // fs.writeFileSync(file, bitmap);
-  // console.log('--->', req.body.imgDate)
+  // // console.log('--->', req.body.imgDate)
   const unitArr = []
   const url = req.body.imgDate
   let n = req.body.imgDate.length
   for (let i = 0; i < n; i++) {
     unitArr[i] = url.charCodeAt(i)
   }
-  // console.log('unitArr:', unitArr)
-  // console.log(new Blob([unitArr], { type: 'image/jpeg' }))
+  // // console.log('unitArr:', unitArr)
+  // // console.log(new Blob([unitArr], { type: 'image/jpeg' }))
   const decode = Buffer.from(req.body.imgDate , 'base64')
   fs.writeFile('./test.jpg', decode, (err) => {
     if (err) {
-      console.log('error!!!')
+      // console.log('error!!!')
     } else {
-      console.log('写文件成功！！')
+      // console.log('写文件成功！！')
     }
   })
 })
