@@ -87,11 +87,20 @@ app.get('/img', (req, res) => {
     }
   })
 })
+app.post('/logout', (req, res) => {
+  res.send({
+    code: 20000,
+    data: {
+      word: 'out',
+    }
+  })
+})
 app.get('/music', (req, res) => {
-  fs.readFile('./media/Novera.mp3', 'binary', (err, data) => {
+  fs.readFile('./media/小姐.mp3', 'binary', (err, data) => {
     if(err) {
       throw err
     } else {
+      // console.log('data--->', data)
       res.write(data, 'binary')
       res.end()
     }
@@ -99,8 +108,8 @@ app.get('/music', (req, res) => {
   
 })
 app.post('/upload', (req, res) => {
-  console.log('upload!')
-  console.log('req.headers:', req.headers)
+  // console.log('upload!')
+  // console.log('req.headers:', req.headers)
   const busboy = new Busboy({ headers: req.headers });
   busboy.on('file', (fieldname, file, filename, encoding, mimetype) => {
     const saveTo = path.join(__dirname, 'uploads', filename);
@@ -125,15 +134,15 @@ app.post('/sendImg', (req, res) => {
   // console.log('反馈:', req.body)
   // var bitmap = new Buffer(req.body, 'base64');
   // fs.writeFileSync(file, bitmap);
-  console.log('--->', req.body.imgDate)
+  // console.log('--->', req.body.imgDate)
   const unitArr = []
   const url = req.body.imgDate
   let n = req.body.imgDate.length
   for (let i = 0; i < n; i++) {
     unitArr[i] = url.charCodeAt(i)
   }
-  console.log('unitArr:', unitArr)
-  console.log(new Blob([unitArr], { type: 'image/jpeg' }))
+  // console.log('unitArr:', unitArr)
+  // console.log(new Blob([unitArr], { type: 'image/jpeg' }))
   const decode = Buffer.from(req.body.imgDate , 'base64')
   fs.writeFile('./test.jpg', decode, (err) => {
     if (err) {
