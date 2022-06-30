@@ -1,3 +1,11 @@
+/*
+ * @Author: Hhvcg
+ * @Date: 2022-02-28 10:07:23
+ * @LastEditors: -_-
+ * @Description: 
+ */
+const fs = require('fs')
+const path = require('path')
 const crypto = require('crypto')
 const jwt = require('jsonwebtoken');
 // 用户信息加密处理
@@ -21,6 +29,14 @@ const secretA = (userInfo) => {
 let count = 0
 const add = (num1, num2) => {
     conut = num1 + num2
+}
+
+// 返回media目录下的文件
+const getAllSongs = () => {
+    const mediaPath = path.join(__dirname, 'media')
+    let res = null
+    res = fs.readdirSync(mediaPathir).filter((item) => item.includes('.mp3'))
+    return res
 }
 
 module.exports.crp = crp

@@ -9,7 +9,7 @@ const qs = require('querystring');
 const cors = require('cors');
 const { crp, secretA } = require('./tools')
 const Busboy = require('busboy')
-const mediaPath = './media/'
+const mediaPath = '../media/'
 const songs = ['小姐.mp3', '诚如神之所说.mp3', 'Novera.mp3']
 
 app.use(cors());
@@ -35,6 +35,8 @@ app.get('/users',function(req, res){
       res.send(result);
   });
 });
+
+
 
 
 
@@ -68,6 +70,15 @@ app.get('/getInfo', (req, res) => {
       avatar: '',
     }
   })
+})
+
+// 获取歌曲列表,默认扫描跟node项目同层级路径下media文件夹中的音频文件
+app.get('/songs/list', (req, res) => {
+  const mediaPath = path.join(__dirname)
+  const p = mediaPath.substr(0, mediaPath.length - 11) + '\\media'
+  const data = fs.readdirSync(p).filter((item) => item.includes('.mp3'))
+  console.log('扫描结果--->', data)
+  res.send(data)
 })
 
 app.post('/signIn', (req, res) => {

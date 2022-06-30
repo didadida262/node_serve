@@ -1,3 +1,9 @@
+/*
+ * @Author: Hhvcg
+ * @Date: 2022-02-28 10:07:23
+ * @LastEditors: -_-
+ * @Description: 文件扫描器
+ */
 const fs = require('fs')
 const path = require('path')
 // // 同步读取
@@ -67,38 +73,22 @@ const path = require('path')
 
 
 
-// --->文件扫描器
+const mediaPath = path.join(__dirname)
 
-// 同步判断文件类型
-const judeFile = (filname) => {
-    const file = fs.statSync(filname)
-    if(file.isFile()) {
-        return true
-    } else {
-        return false
-    }
-}
-// 判断文件乞丐版
-const jude = (filename) => {
-    return filename.indexOf('.') === -1? false: true
-}
-const p = path.resolve(__dirname)
-// 打印当前目录开始的所有儿子(不包括孙子,重孙....)
-const res = []
-const f = (path) => {
-    const dirs = fs.readdirSync(path)
-    const r = []
-    for (const item of dirs) {
-        const c = {}
-        const cPath = path == './'? path + item: path + '/' + item
-        if (judeFile(cPath)) {
-            c[item] = "$"
-        } else {
-            c[item] = f(cPath)
-        }
-        r.push(c)
-    }
-    return r
-}
-res.push(...f('./'))
-console.log('res:', res[2])
+// console.log('mediaPath---->', mediaPath.substr(0, mediaPath.length - 11) + '\\media')
+
+module.exports.name = 'name'
+// console.log('module---->',module)
+// console.log('exports---->',exports)
+// console.log('required---->',require)
+
+console.log('file', __filename)
+console.log('__dirname', __dirname)
+
+
+
+
+
+
+
+
