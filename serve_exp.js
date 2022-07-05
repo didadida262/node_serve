@@ -10,7 +10,7 @@ const cors = require('cors');
 const { crp, secretA } = require('./tools')
 const Busboy = require('busboy')
 const mediaPath = '../media/'
-const songs = ['小姐.mp3', '诚如神之所说.mp3', 'Novera.mp3']
+let songs = null
 
 app.use(cors());
 app.use(express.urlencoded({ extended: false }));
@@ -77,6 +77,7 @@ app.get('/songs/list', (req, res) => {
   const mediaPath = path.join(__dirname)
   const p = mediaPath.substr(0, mediaPath.length - 11) + '\\media'
   const data = fs.readdirSync(p).filter((item) => item.includes('.mp3'))
+  songs = [...data]
   console.log('扫描结果--->', data)
   res.send(data)
 })
@@ -111,6 +112,7 @@ app.post('/logout', (req, res) => {
 })
 app.get('/music', (req, res) => {
   console.log('req----->',req.query.index)
+  console.log('songs--->', songs)
   fs.readFile(mediaPath + songs[req.query.index], 'binary', (err, data) => {
     if(err) {
       throw err

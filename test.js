@@ -4,9 +4,6 @@
  * @LastEditors: -_-
  * @Description:测试文件
  */
-const path = require('path')
+const arr = ['1', '2', '3']
 
-
-const resolve = (dir) => {
-  return path.join(__dirname, dir)
-}
+console.log(Math.ceil(1.5))
