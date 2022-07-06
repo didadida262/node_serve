@@ -4,6 +4,11 @@
  * @LastEditors: -_-
  * @Description:测试文件
  */
-const arr = ['1', '2', '3']
+let x = {c: 'x'}
+let y = {c: 'y'}
+x.a = y
+y.a = x
+x = null
 
-console.log(Math.ceil(1.5))
+console.log('x--->', x)
+console.log('y--->', y.a)
