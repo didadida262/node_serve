@@ -121,7 +121,6 @@ app.get('/music', (req, res) => {
       res.end()
     }
   })
-  
 })
 app.post('/upload', (req, res) => {
   // console.log('upload!')
