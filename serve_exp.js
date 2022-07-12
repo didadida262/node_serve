@@ -9,7 +9,8 @@ const qs = require('querystring');
 const cors = require('cors');
 const { crp, secretA } = require('./tools')
 const Busboy = require('busboy')
-const mediaPath = '../media/'
+const node_respPath = __dirname.split(path.sep).slice( 0, __dirname.split(path.sep).length - 1).join('\\') + '\\node_resp'
+const mediaPath = node_respPath + '\\media\\'
 let songs = null
 
 app.use(cors());
@@ -74,9 +75,7 @@ app.get('/getInfo', (req, res) => {
 
 // 获取歌曲列表,默认扫描跟node项目同层级路径下media文件夹中的音频文件
 app.get('/songs/list', (req, res) => {
-  const mediaPath = path.join(__dirname)
-  const p = mediaPath.substr(0, mediaPath.length - 11) + '\\media'
-  const data = fs.readdirSync(p).filter((item) => item.includes('.mp3'))
+  const data = fs.readdirSync(mediaPath).filter((item) => item.includes('.mp3'))
   songs = [...data]
   console.log('扫描结果--->', data)
   res.send(data)
@@ -110,6 +109,8 @@ app.post('/logout', (req, res) => {
     }
   })
 })
+
+// 根据index获取歌曲
 app.get('/music', (req, res) => {
   console.log('req----->',req.query.index)
   console.log('songs--->', songs)
@@ -120,6 +121,44 @@ app.get('/music', (req, res) => {
       res.write(data, 'binary')
       res.end()
     }
+  })
+})
+// 读取服务端文章数据返回给前端，目测需要数据库的支持
+app.get('/getArticleList', (req, res) => {
+  res.send({
+    code: 20000,
+    data: [
+      {
+        title: '测试1',
+        image: '',
+        create_date: '2022.10.111',
+        content: '测试数..............'
+      },
+      {
+        title: '测试2',
+        image: '',
+        create_date: '2022.10.111',
+        content: '测试数..............'
+      },
+      {
+        title: '测试3',
+        image: '',
+        create_date: '2022.10.111',
+        content: '测试数..............'
+      },
+      {
+        title: '测试4',
+        image: '',
+        create_date: '2022.10.111',
+        content: '测试数..............'
+      },
+      {
+        title: '测试5',
+        image: '',
+        create_date: '2022.10.111',
+        content: '测试数..............'
+      }
+    ]
   })
 })
 app.post('/upload', (req, res) => {

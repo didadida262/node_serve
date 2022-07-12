@@ -4,11 +4,8 @@
  * @LastEditors: -_-
  * @Description:测试文件
  */
-let x = {c: 'x'}
-let y = {c: 'y'}
-x.a = y
-y.a = x
-x = null
-
-console.log('x--->', x)
-console.log('y--->', y.a)
+const path = require('path')
+const node_respPath = __dirname.split(path.sep).slice( 0, __dirname.split(path.sep).length - 1).join('\\') + '\\node_resp'
+// console.log('当前项目地址--->', path.join(__dirname))
+console.log('outDirPath', node_respPath)
+// console.log('basename--->', path.basename('C:\\temp\\myfile.html'))

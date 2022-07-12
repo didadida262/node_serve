@@ -30,12 +30,20 @@ const useMemory = () => {
   }
   return arr
 }
+const userMemory2 = () => {
+  const size = 200 * 1024 * 1024
+  const buffer = new Buffer(size)
+  for (let i = 0; i < size; i++) {
+    buffer[i] = 0
+  }
+  return buffer
+}
 const total = []
 for (let i = 0; i < 20; i++) {
   console.log('index---->', i)
   console.log(printMemoryInfo())
   console.log('====================================')
-  total.push(useMemory())
+  total.push(userMemory2())
 }
 // // 查看系统内存
 // console.log(format('系统总内存', os.totalmem()))
