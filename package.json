@@ -16,7 +16,8 @@
     "jsonwebtoken": "^8.5.1",
     "koa": "^2.13.4",
     "mysql": "^2.18.1",
-    "nodemon": "^2.0.15"
+    "nodemon": "^2.0.15",
+    "object-sizeof": "^1.6.3"
   },
   "devDependencies": {
     "cors": "^2.8.5"
