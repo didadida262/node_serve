@@ -1,13 +1,34 @@
+
 /*
+ *                        .::::.
+ *                      .::::::::.
+ *                     :::::::::::
+ *                  ..:::::::::::'
+ *               '::::::::::::'
+ *                 .::::::::::
+ *            '::::::::::::::..
+ *                 ..::::::::::::.
+ *               ``::::::::::::::::
+ *                ::::``:::::::::'        .:::.
+ *               ::::'   ':::::'       .::::::::.
+ *             .::::'      ::::     .:::::::'::::.
+ *            .:::'       :::::  .:::::::::' ':::::.
+ *           .::'        :::::.:::::::::'      ':::::.
+ *          .::'         ::::::::::::::'         ``::::.
+ *      ...:::           ::::::::::::'              ``::.
+ *     ````':.          ':::::::::'                  ::::..
+ *                        '.:::::'                    ':'````..
+ * 
  * @Author: Hhvcg
  * @Date: 2022-02-28 10:07:23
  * @LastEditors: -_-
- * @Description: 
+ * @Description: 军武库
  */
 const fs = require('fs')
 const path = require('path')
 const crypto = require('crypto')
 const jwt = require('jsonwebtoken');
+
 // 用户信息加密处理
 const crp = (userInfo) => {
     const userInfoStr = userInfo.userName + userInfo.password
@@ -39,7 +60,33 @@ const getAllSongs = () => {
     return res
 }
 
-module.exports.crp = crp
-module.exports.secretA = secretA
-module.exports.add = add
-module.exports.count = count
+
+/**
+ * @description: 比特转换器  
+ * @param {*} name 名称
+ * @param {*} bytes 比特值大小
+ * @return {*} MB单位值
+ */
+const format = (name, bytes) => {
+    return name + ': '+ (bytes / 1024 / 1024 ).toFixed(2) + ' MB '
+}
+
+/**
+ * @description: 程序耗时检测器 
+ * @param {*} 输出名称
+ * @param {*} fn
+ * @return {*} 输出程序用时
+ */
+ const costTime = (name, fn) => {
+    console.time(name)
+    fn()
+    console.timeEnd(name)
+  }
+  
+  module.exports = {
+    crp,
+    secretA,
+    add,
+    count,
+    costTime
+  }

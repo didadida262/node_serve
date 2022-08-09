@@ -1,9 +1,4 @@
-/*
- * @Author: Hhvcg
- * @Date: 2022-07-11 15:47:54
- * @LastEditors: -_-
- * @Description: 内存篇
- */
+
 
 
 const os = require('os')
@@ -11,6 +6,8 @@ const os = require('os')
 const format = (name, bytes) => {
   return name + ': '+ (bytes / 1024 / 1024 ).toFixed(2) + ' MB '
 }
+
+// console.log('window---', (window.performance.memory.usedJSHeapSize / 1024 / 1024 ).toFixed(2) + ' MB ' )
 
 const printMemoryInfo = () => {
   const memory = process.memoryUsage()
@@ -20,7 +17,6 @@ const printMemoryInfo = () => {
   }
   return res
 }
-
 
 const useMemory = () => {
   const size = 1 * 1024 * 1024
