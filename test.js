@@ -29,11 +29,14 @@
  * @Description: 
  */
 
-const { costTime } = require("./tools");
-const f = () => {
-  let n = 10E8
-  while (n > 0) {
-    n--
-  }
+
+const obj = {
+  name: 'hhvcg',
+  old: '12'
 }
-costTime('测试',f)
+
+for (let key in obj) {
+  console.log(key)
+}
+
+console.log(Object.keys(obj))
