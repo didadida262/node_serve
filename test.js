@@ -30,13 +30,43 @@
  */
 
 
-const obj = {
-  name: 'hhvcg',
-  old: '12'
-}
 
-for (let key in obj) {
-  console.log(key)
-}
 
-console.log(Object.keys(obj))
+
+const { getAllChar } = require('./tools')
+const fs = require('fs')
+const path = require('path')
+
+// const Big = getAllBigChar()
+// const small = getAllSmallChar()
+// console.log('Big--', Big)
+// console.log('small--', small)
+
+// for (let i = 65; i < 91; i++) {
+//   big.push(String.fromCharCode(i))
+// }
+
+// let small = []
+// for (let i = 0; i < 1230; i++) {
+//   small.push(String.fromCharCode(i))
+// }
+
+// console.log('small--->', small.join(' '))
+// 骷髅头
+// get asicil of cha
+// s.charCodeAt()
+let x = "\u2620"
+// console.log(x)
+// const res = getAllChar('any', 0, 65535).join(' ')
+// fs.writeFile('all.txt', res, (err) => {
+//   if (err) {
+//     console.log(err)
+//   } else {
+//     console.log('success！！！')
+//   }
+// })
+
+let arr = [1,2,3,4]
+arr.shift()
+console.log(arr)
+

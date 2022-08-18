@@ -82,11 +82,37 @@ const format = (name, bytes) => {
     fn()
     console.timeEnd(name)
   }
+
+ /**
+  * @description: 万能字符获取器 
+  * @param {*} type small、big、num、any
+  * @param {*} start 若类型为any则需要输入开始和结束值，否则输出空
+  * @param {*} end
+  * @return {*} 返回结果数组
+  */
+ const getAllChar = (type, start, end) => {
+    const targetObj = {
+        // 大小写字母：65--90，97-122
+        small: [97, 122],
+        big: [65, 90],
+        // 数字：48--57
+        num: [48, 57],
+        any: [start, end]
+    }
+    const range = targetObj[type]
+    const res = []
+    let point = range[1]
+    while(point >= range[0]) {
+        res.unshift(String.fromCharCode(point))
+        point--
+    }
+    return res
+}
   
   module.exports = {
     crp,
     secretA,
     add,
-    count,
-    costTime
+    costTime,
+    getAllChar
   }
