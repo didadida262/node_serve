@@ -104,6 +104,7 @@ const format = (name, bytes) => {
     let point = range[1]
     while(point >= range[0]) {
         res.unshift(String.fromCharCode(point))
+        // charCodeAt
         point--
     }
     return res

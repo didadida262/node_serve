@@ -32,7 +32,6 @@
 
 
 
-
 const { getAllChar } = require('./tools')
 const fs = require('fs')
 const path = require('path')
@@ -56,7 +55,7 @@ const path = require('path')
 // get asicil of cha
 // s.charCodeAt()
 let x = "\u2620"
-// console.log(x)
+console.log(x)
 // const res = getAllChar('any', 0, 65535).join(' ')
 // fs.writeFile('all.txt', res, (err) => {
 //   if (err) {
@@ -65,8 +64,10 @@ let x = "\u2620"
 //     console.log('success！！！')
 //   }
 // })
+let xx = '⳧'
+// 11495
+console.log(xx.charCodeAt())
+console.log(String.fromCharCode(11495))
 
-let arr = [1,2,3,4]
-arr.shift()
-console.log(arr)
+
 
