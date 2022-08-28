@@ -65,9 +65,15 @@ console.log(x)
 //   }
 // })
 let xx = '⳧'
-// 11495
-console.log(xx.charCodeAt())
-console.log(String.fromCharCode(11495))
+// // 11495
+
+// console.log(xx.charCodeAt())
+// console.log(String.fromCharCode(11495))
+
+const f = () => {
+
+}
+console.log('sss',typeof f)
 
 
 
