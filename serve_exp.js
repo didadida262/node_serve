@@ -56,6 +56,18 @@ app.set('port', process.env.PORT || 3000);
 app.get('/',(request,response)=>{
  response.sendFile(__dirname + '/index.html');
 });
+app.get('/getAllChar', (req, res) => {
+    fs.readFile('all.txt', 'utf-8', (err, data) => {
+      if (err) {
+          console.log('error:', err)
+      } else {
+          console.log('成功读取!')
+          res.send({
+            data: data.split('')
+          })
+      }
+  })
+})
 
 app.get('/users',(req,res)=>{
   res.json(users);
