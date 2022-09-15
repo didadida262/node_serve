@@ -56,14 +56,14 @@ const path = require('path')
 // s.charCodeAt()
 let x = "\u2620"
 console.log(x)
-// const res = getAllChar('any', 0, 65535).join(' ')
-// fs.writeFile('all.txt', res, (err) => {
-//   if (err) {
-//     console.log(err)
-//   } else {
-//     console.log('success！！！')
-//   }
-// })
+const res = getAllChar('any', 0, 65535).join(' ')
+fs.writeFile('all.txt', res, (err) => {
+  if (err) {
+    console.log(err)
+  } else {
+    console.log('success！！！')
+  }
+})
 let xx = '⳧'
 // // 11495
 

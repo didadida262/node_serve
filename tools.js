@@ -28,7 +28,6 @@ const fs = require('fs')
 const path = require('path')
 const crypto = require('crypto')
 const jwt = require('jsonwebtoken');
-console.log('??????????')
 // 用户信息加密处理
 const crp = (userInfo) => {
     const userInfoStr = userInfo.userName + userInfo.password
@@ -104,6 +103,9 @@ const format = (name, bytes) => {
     let point = range[1]
     while(point >= range[0]) {
         res.unshift(String.fromCharCode(point))
+        if(point % 70 === 0) {
+            res.unshift('\n')
+        }
         // charCodeAt
         point--
     }
