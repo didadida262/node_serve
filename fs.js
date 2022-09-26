@@ -6,6 +6,10 @@
  */
 const fs = require('fs')
 const path = require('path')
+const videoPath = 'F:\\Public_disk\\' + 'the great films' + '\\Time'
+
+console.log(videoPath)
+
 // // 同步读取
 // const dirs = fs.readdirSync('./')
 
@@ -82,8 +86,8 @@ module.exports.name = 'name'
 // console.log('exports---->',exports)
 // console.log('required---->',require)
 
-console.log('file', __filename)
-console.log('__dirname', __dirname)
+// console.log('file', __filename)
+// console.log('__dirname', __dirname)
 
 
 

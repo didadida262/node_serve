@@ -65,15 +65,7 @@ fs.writeFile('all.txt', res, (err) => {
   }
 })
 let xx = '⳧'
-// // 11495
 
-// console.log(xx.charCodeAt())
-// console.log(String.fromCharCode(11495))
-
-const f = () => {
-
-}
-console.log('sss',typeof f)
-
-
+console.log('__dirname>>',__dirname)
+console.log('path',path.basename)
 

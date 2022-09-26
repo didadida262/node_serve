@@ -11,6 +11,9 @@ const { crp, secretA } = require('./tools')
 const Busboy = require('busboy')
 const node_respPath = __dirname.split(path.sep).slice( 0, __dirname.split(path.sep).length - 1).join('\\') + '\\node_resp'
 const mediaPath = node_respPath + '\\media\\'
+
+const videoPath = 'F:\\Public_disk\\' + 'the great films' + '\\Time\\'
+
 let songs = null
 
 app.use(cors());
@@ -217,6 +220,32 @@ app.post('/sendImg', (req, res) => {
       // console.log('写文件成功！！')
     }
   })
+})
+
+// 返回videos列表数据
+app.post('/getVideosList', (req, res) => {
+  fs.readdir(videoPath, (err, data) => {
+    if (err) {
+        console.log('path error:', err)
+    } else {
+      let videosList = []
+      data.forEach((item, index) => {
+        let obj = {
+          id: index,
+          name: item,
+        }
+        videosList.push(obj)
+      })
+      res.send(videosList)
+    }
+  })
+})
+app.post('/getVideo', (req, res) => {
+  console.log('req.params>>>',req.params)
+  console.log('req.body>>>',req.body)
+  const header = { 'Content-Type': 'video/mp4'}
+  fs.createReadStream(videoPath + req.body.name)
+  .pipe(res)
 })
 //Binding to localhost://3000
 app.listen(3000,() => {
