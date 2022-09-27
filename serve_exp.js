@@ -12,8 +12,10 @@ const Busboy = require('busboy')
 const node_respPath = __dirname.split(path.sep).slice( 0, __dirname.split(path.sep).length - 1).join('\\') + '\\node_resp'
 const mediaPath = node_respPath + '\\media\\'
 
-const videoPath = 'F:\\Public_disk\\' + 'the great films' + '\\Time\\'
-
+const categoryObj = {
+  socialPath: 'F:\\Public_disk\\' + 'the great films' + '\\Time\\',
+  mvPath: 'F:\\Public_disk\\音乐\\点歌台\\'
+}
 let songs = null
 
 app.use(cors());
@@ -224,7 +226,7 @@ app.post('/sendImg', (req, res) => {
 
 // 返回videos列表数据
 app.post('/getVideosList', (req, res) => {
-  fs.readdir(videoPath, (err, data) => {
+  fs.readdir(categoryObj[req.body.currentCate + 'Path'], (err, data) => {
     if (err) {
         console.log('path error:', err)
     } else {
@@ -241,10 +243,9 @@ app.post('/getVideosList', (req, res) => {
   })
 })
 app.post('/getVideo', (req, res) => {
-  console.log('req.params>>>',req.params)
   console.log('req.body>>>',req.body)
   const header = { 'Content-Type': 'video/mp4'}
-  fs.createReadStream(videoPath + req.body.name)
+  fs.createReadStream(categoryObj[req.body.currentCate + 'Path'] + req.body.name)
   .pipe(res)
 })
 //Binding to localhost://3000

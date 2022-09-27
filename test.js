@@ -66,6 +66,16 @@ fs.writeFile('all.txt', res, (err) => {
 })
 let xx = '⳧'
 
-console.log('__dirname>>',__dirname)
-console.log('path',path.basename)
+// console.log('__dirname>>',__dirname)
+// console.log('path',path.basename)
 
+
+  const p = 'C:\\Users\\hhvcg\\Desktop\\work\\' 
+  // 修改文件名
+// fs.rename(p + 'test2.doc', p + 'test！！！！！.doc', (err) => {
+//   if (err) {
+//     throw err;
+//   } else {
+//     console.log('success！！')
+//   }
+// });
