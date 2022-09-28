@@ -14,7 +14,8 @@ const mediaPath = node_respPath + '\\media\\'
 
 const categoryObj = {
   socialPath: 'F:\\Public_disk\\' + 'the great films' + '\\Time\\',
-  mvPath: 'F:\\Public_disk\\音乐\\点歌台\\'
+  mvPath: 'F:\\Public_disk\\音乐\\点歌台\\',
+  intrestingPath: 'G:\\存档资料\\新建文件夹\\'
 }
 let songs = null
 
