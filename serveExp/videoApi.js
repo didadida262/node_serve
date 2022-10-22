@@ -41,10 +41,12 @@ const VIDEO = {
             .pipe(res)
     },
     changeFileName: (req, res) => {
-        // fs.rename
-        console.log('req>>>', req.body)
-        res.send({
-            message: 'success'
+        fs.rename(oldPath, newPath, (err) => {
+            if (!err) {
+                res.send({
+                    message: 'success'
+                })
+            }
         })
     }
 }
