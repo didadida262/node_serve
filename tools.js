@@ -45,6 +45,10 @@ const secretA = (userInfo) => {
     return token
 }
 
+const secretABack = (token) => {
+    return jwt.verify(token, 'shhhhh')
+}
+
 // 非对成加密
 let count = 0
 const add = (num1, num2) => {
@@ -117,5 +121,6 @@ const format = (name, bytes) => {
     secretA,
     add,
     costTime,
-    getAllChar
+    getAllChar,
+    secretABack
   }

@@ -19,6 +19,7 @@ const SIGN = {
         })
     },
     getInfo: (req, res) => {
+        console.log('客户端的token---->', req)
         res.send({
             code: 20000,
             data: {
@@ -29,6 +30,7 @@ const SIGN = {
         })
 
     }
+    //   })    
 }
 
 module.exports = {

@@ -1,8 +1,25 @@
 const fs = require('fs')
+const { crp, secretABack } = require('.././tools')
+
 const { CATEGORIES } = require('../utils/const.ts')
 const VIDEO = {
     getCates: (req, res) => {
-        res.send(Object.keys(CATEGORIES))
+        //  req.headers.authorization.slice(7)
+        // rawHeaders
+        console.log('//////////////')
+        console.log('//////////////')
+        console.log('//////////////')
+        console.log('//////////////')
+        console.log('//////////////')
+        const token = req.rawHeaders[13]
+        console.log('token>>>>>>>>>>', token)
+        const userInfo = secretABack(token)
+        if (userInfo.username === 'admin') {
+            res.send(Object.keys(CATEGORIES))
+        } else {
+            res.send(Object.keys(CATEGORIES).slice(0,2))
+        }
+
     },
     // 返回目标类别的videos列表数据
     getVideosList: (req, res) => {
