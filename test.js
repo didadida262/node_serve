@@ -79,3 +79,10 @@ let xx = '⳧'
 //     console.log('success！！')
 //   }
 // });
+
+const obj = {
+  a: 2,
+  b: 3
+}
+
+console.log('ssss', Object.keys(obj))

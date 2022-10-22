@@ -1,33 +1,10 @@
-//app.js
-const Blob = require('blob-polyfill')
-const path = require('path')
-const fs = require('fs')
-const express = require('express'),
-      app = express(),
-      users = require('./users');
-const qs = require('querystring');
-const cors = require('cors');
-const { crp, secretA } = require('./tools')
-const Busboy = require('busboy')
-const node_respPath = __dirname.split(path.sep).slice( 0, __dirname.split(path.sep).length - 1).join('\\') + '\\node_resp'
-const mediaPath = node_respPath + '\\media\\'
-
-const categoryObj = {
-  socialPath: 'F:\\Public_disk\\' + 'the great films' + '\\Time\\',
-  mvPath: 'F:\\Public_disk\\音乐\\点歌台\\',
-  intrestingPath: 'G:\\存档资料\\新建文件夹\\'
-}
-let songs = null
-
-app.use(cors());
-app.use(express.urlencoded({ extended: false }));
-app.use(express.json());
 
 
 
 
 
-const User = require('./models/User');
+
+const User = require('../models/User');
 
 app.get('/users',function(req, res){
   var params = qs.parse(req.url.split('?')[1]);
@@ -42,9 +19,6 @@ app.get('/users',function(req, res){
       res.send(result);
   });
 });
-
-
-
 
 
 // app.all('*', function(req, res, next) {
@@ -79,17 +53,6 @@ app.get('/users',(req,res)=>{
   res.json(users);
 });
 
-app.get('/getInfo', (req, res) => {
-  // console.log('客户端的token---->', req)
-  res.send({
-    code: 20000,
-    data: {
-      word: '百般乐器，唢呐为王，不是升天，就是拜堂',
-      name: 'hhvcg',
-      avatar: '',
-    }
-  })
-})
 
 // 获取歌曲列表,默认扫描跟node项目同层级路径下media文件夹中的音频文件
 app.get('/songs/list', (req, res) => {
@@ -99,15 +62,7 @@ app.get('/songs/list', (req, res) => {
   res.send(data)
 })
 
-app.post('/signIn', (req, res) => {
-  const token = secretA(req.body)
-  const data = {
-    data: req.body,
-    token: token,
-    code: 20000
-  }
-  res.send(data);
-})
+
 
 app.get('/img', (req, res) => {
   fs.readFile('./media/desk.jpg', 'binary', (err, data) => {
@@ -119,14 +74,7 @@ app.get('/img', (req, res) => {
     }
   })
 })
-app.post('/logout', (req, res) => {
-  res.send({
-    code: 20000,
-    data: {
-      word: 'out',
-    }
-  })
-})
+
 
 // 根据index获取歌曲
 app.get('/music', (req, res) => {
@@ -225,33 +173,11 @@ app.post('/sendImg', (req, res) => {
   })
 })
 
-// 返回videos列表数据
-app.post('/getVideosList', (req, res) => {
-  fs.readdir(categoryObj[req.body.currentCate + 'Path'], (err, data) => {
-    if (err) {
-        console.log('path error:', err)
-    } else {
-      let videosList = []
-      data.forEach((item, index) => {
-        let obj = {
-          id: index,
-          name: item,
-        }
-        videosList.push(obj)
-      })
-      res.send(videosList)
-    }
-  })
-})
-app.post('/getVideo', (req, res) => {
-  console.log('req.body>>>',req.body)
-  const header = { 'Content-Type': 'video/mp4'}
-  fs.createReadStream(categoryObj[req.body.currentCate + 'Path'] + req.body.name)
-  .pipe(res)
-})
-//Binding to localhost://3000
-app.listen(3000,() => {
- console.log('Express app started at port 3000');
-});
+
+const x = 2
+module.exports = {
+  app,
+  x
+}
 
 
