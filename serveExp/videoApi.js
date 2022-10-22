@@ -6,13 +6,8 @@ const VIDEO = {
     getCates: (req, res) => {
         //  req.headers.authorization.slice(7)
         // rawHeaders
-        console.log('//////////////')
-        console.log('//////////////')
-        console.log('//////////////')
-        console.log('//////////////')
-        console.log('//////////////')
-        const token = req.rawHeaders[13]
-        console.log('token>>>>>>>>>>', token)
+
+        const token = req.headers['x-token']
         const userInfo = secretABack(token)
         if (userInfo.username === 'admin') {
             res.send(Object.keys(CATEGORIES))
@@ -41,10 +36,6 @@ const VIDEO = {
         })
     },
     getVideo: (req, res) => {
-        console.log('---->')
-        console.log('---->')
-        console.log('---->')
-        console.log('>>>>>>',CATEGORIES[req.body.currentCate].path  + req.body.name)        
         const header = { 'Content-Type': 'video/mp4' }
         fs.createReadStream(CATEGORIES[req.body.currentCate].path + req.body.name)
             .pipe(res)
