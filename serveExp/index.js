@@ -35,6 +35,7 @@ app.get('/getInfo', SIGN.getInfo)
 app.post('/getVideosList', VIDEO.getVideosList)
 app.post('/getVideo', VIDEO.getVideo)
 app.get('/getCates', VIDEO.getCates)
+app.post('/changeFileName', VIDEO.changeFileName)
 
 // //Binding to localhost://3000
 app.listen(3000,() => {

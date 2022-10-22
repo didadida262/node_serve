@@ -39,6 +39,12 @@ const VIDEO = {
         const header = { 'Content-Type': 'video/mp4' }
         fs.createReadStream(CATEGORIES[req.body.currentCate].path + req.body.name)
             .pipe(res)
+    },
+    changeFileName: (req, res) => {
+        console.log('req>>>', req.body)
+        res.send({
+            message: 'success'
+        })
     }
 }
 
