@@ -18,10 +18,9 @@ const VIDEO = {
     },
     // 返回目标类别的videos列表数据
     getVideosList: (req, res) => {
-
         fs.readdir(CATEGORIES[req.body.currentCate].path, (err, data) => {
             if (err) {
-                console.log('path error:', err)
+                res.sendStatus(404)
             } else {
                 let videosList = []
                 data.forEach((item, index) => {
