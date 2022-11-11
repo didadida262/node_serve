@@ -27,6 +27,7 @@ const VIDEO = {
                     let obj = {
                         id: index,
                         name: item,
+                        path: CATEGORIES[req.body.currentCate].path
                     }
                     videosList.push(obj)
                 })
@@ -40,11 +41,17 @@ const VIDEO = {
             .pipe(res)
     },
     changeFileName: (req, res) => {
+        const oldPath = req.body.path + req.body.name
+        const newPath = req.body.path + req.body.inputName
+        console.log('oldPath',oldPath)
+        console.log('newPath',newPath)
         fs.rename(oldPath, newPath, (err) => {
             if (!err) {
                 res.send({
                     message: 'success'
                 })
+            } else {
+                res.sendStatus('500')
             }
         })
     }
