@@ -18,16 +18,16 @@ const VIDEO = {
     },
     // 返回目标类别的videos列表数据
     getVideosList: (req, res) => {
-
         fs.readdir(CATEGORIES[req.body.currentCate].path, (err, data) => {
             if (err) {
-                console.log('path error:', err)
+                res.sendStatus(404)
             } else {
                 let videosList = []
                 data.forEach((item, index) => {
                     let obj = {
                         id: index,
                         name: item,
+                        path: CATEGORIES[req.body.currentCate].path
                     }
                     videosList.push(obj)
                 })
@@ -41,11 +41,17 @@ const VIDEO = {
             .pipe(res)
     },
     changeFileName: (req, res) => {
+        const oldPath = req.body.path + req.body.name
+        const newPath = req.body.path + req.body.inputName
+        console.log('oldPath',oldPath)
+        console.log('newPath',newPath)
         fs.rename(oldPath, newPath, (err) => {
             if (!err) {
                 res.send({
                     message: 'success'
                 })
+            } else {
+                res.sendStatus('500')
             }
         })
     }
