@@ -56,21 +56,20 @@ const path = require('path')
 // s.charCodeAt()
 let x = "\u2620"
 console.log(x)
-const res = getAllChar('any', 0, 65535).join(' ')
-fs.writeFile('all.txt', res, (err) => {
-  if (err) {
-    console.log(err)
-  } else {
-    console.log('success！！！')
-  }
-})
+// const res = getAllChar('any', 0, 65535).join(' ')
+// fs.writeFile('all.txt', res, (err) => {
+//   if (err) {
+//     console.log(err)
+//   } else {
+//     console.log('success！！！')
+//   }
+// })
 let xx = '⳧'
 
 // console.log('__dirname>>',__dirname)
 // console.log('path',path.basename)
 
 
-  const p = 'C:\\Users\\hhvcg\\Desktop\\work\\' 
   // 修改文件名
 // fs.rename(p + 'test2.doc', p + 'test！！！！！.doc', (err) => {
 //   if (err) {
@@ -80,3 +79,6 @@ let xx = '⳧'
 //   }
 // });
 
+const t = new Date()
+
+console.log(t.toLocaleString())

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
-var WebSocketClient = require('websocket').client;
+const WebSocketClient = require('websocket').client;
 
-var client = new WebSocketClient();
+const client = new WebSocketClient();
 
 client.on('connectFailed', function(error) {
     console.log('Connect Error: ' + error.toString());
@@ -21,14 +21,14 @@ client.on('connect', function(connection) {
         }
     });
     
-    function sendNumber() {
-        if (connection.connected) {
-            var number = Math.round(Math.random() * 0xFFFFFF);
-            connection.sendUTF(number.toString());
-            setTimeout(sendNumber, 1000);
-        }
-    }
-    sendNumber();
+    // function sendNumber() {
+    //     if (connection.connected) {
+    //         var number = Math.round(Math.random() * 0xFFFFFF);
+    //         connection.sendUTF(number.toString());
+    //         setTimeout(sendNumber, 1000);
+    //     }
+    // }
+    // sendNumber();
 });
 
-client.connect('ws://localhost:8080/', 'echo-protocol');
+client.connect('ws://127.0.0.1:1337', 'echo-protocol');
