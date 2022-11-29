@@ -13,7 +13,7 @@ console.log(videoPath)
 // // 同步读取
 // const dirs = fs.readdirSync('./')
 
-// // 异步读取
+// // 异步读取,返回数组
 // fs.readdir('./', (err, data) => {
 //     if (err) {
 //         console.log('path error:', err)

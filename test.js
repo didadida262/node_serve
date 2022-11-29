@@ -32,9 +32,10 @@
 
 
 
-const { getAllChar } = require('./tools')
+const { getAllChar, getFiles } = require('./tools')
 const fs = require('fs')
 const path = require('path')
+
 
 // const Big = getAllBigChar()
 // const small = getAllSmallChar()
@@ -79,6 +80,9 @@ let xx = '⳧'
 //   }
 // });
 
-const t = new Date()
 
-console.log(t.toLocaleString())
+// console.log('--->')
+
+const a = ['a', 'b' , 'c']
+const o = Object.keys(a)
+console.log(0)

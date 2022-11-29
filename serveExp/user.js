@@ -1,4 +1,4 @@
-const { crp, secretA } = require('.././tools')
+const { crp, secretA } = require('../weapons')
 
 const SIGN = {
     signIn: (req, res) => {

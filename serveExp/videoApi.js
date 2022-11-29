@@ -1,5 +1,5 @@
 const fs = require('fs')
-const { crp, secretABack } = require('.././tools')
+const { crp, secretABack } = require('../weapons')
 
 const { CATEGORIES } = require('../utils/const.ts')
 const VIDEO = {
@@ -10,15 +10,16 @@ const VIDEO = {
         const token = req.headers['x-token']
         const userInfo = secretABack(token)
         if (userInfo.username === 'admin') {
-            res.send(Object.keys(CATEGORIES))
+            console.log('CATEGORIES', CATEGORIES)
+            res.send(CATEGORIES.slice(0, CATEGORIES.length - 1))
         } else {
-            res.send(Object.keys(CATEGORIES).slice(0,2))
+            res.send(CATEGORIES.slice(0, CATEGORIES.length - 2))
         }
 
     },
     // 返回目标类别的videos列表数据
     getVideosList: (req, res) => {
-        fs.readdir(CATEGORIES[req.body.currentCate].path, (err, data) => {
+        fs.readdir(req.body.currentCate.path, (err, data) => {
             if (err) {
                 res.sendStatus(404)
             } else {
@@ -27,7 +28,7 @@ const VIDEO = {
                     let obj = {
                         id: index,
                         name: item,
-                        path: CATEGORIES[req.body.currentCate].path
+                        path: req.body.currentCate.path + '\\' + item
                     }
                     videosList.push(obj)
                 })
@@ -36,8 +37,9 @@ const VIDEO = {
         })
     },
     getVideo: (req, res) => {
+        console.log('req.body>>', req.body)
         const header = { 'Content-Type': 'video/mp4' }
-        fs.createReadStream(CATEGORIES[req.body.currentCate].path + req.body.name)
+        fs.createReadStream(req.body.path)
             .pipe(res)
     },
     changeFileName: (req, res) => {
