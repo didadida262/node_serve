@@ -28,7 +28,8 @@ const VIDEO = {
                     let obj = {
                         id: index,
                         name: item,
-                        path: req.body.currentCate.path + '\\' + item
+                        path: req.body.currentCate.path + '\\' + item,
+                        dirPath: req.body.currentCate.path
                     }
                     videosList.push(obj)
                 })
@@ -37,14 +38,14 @@ const VIDEO = {
         })
     },
     getVideo: (req, res) => {
-        console.log('req.body>>', req.body)
+        console.log('req.body>>', req.bodygetVideogetVideo)
         const header = { 'Content-Type': 'video/mp4' }
         fs.createReadStream(req.body.path)
             .pipe(res)
     },
     changeFileName: (req, res) => {
-        const oldPath = req.body.path + req.body.name
-        const newPath = req.body.path + req.body.inputName
+        const oldPath = req.body.path
+        const newPath = req.body.dirPath + '\\' + req.body.inputName
         console.log('oldPath',oldPath)
         console.log('newPath',newPath)
         fs.rename(oldPath, newPath, (err) => {
