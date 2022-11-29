@@ -45,7 +45,7 @@ const VIDEO = {
     },
     changeFileName: (req, res) => {
         const oldPath = req.body.path
-        const newPath = req.body.dirPath + '\\' + req.body.inputName
+        const newPath = req.body.dirPath + '\\' + req.body.inputName + req.body.path.slice(-4)
         console.log('oldPath',oldPath)
         console.log('newPath',newPath)
         fs.rename(oldPath, newPath, (err) => {
