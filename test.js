@@ -32,7 +32,6 @@
 
 
 
-const { getAllChar, getFiles } = require('./tools')
 const fs = require('fs')
 const path = require('path')
 
@@ -83,6 +82,35 @@ let xx = '⳧'
 
 // console.log('--->')
 
-const a = ['a', 'b' , 'c']
-const o = Object.keys(a)
-console.log(0)
+
+const defineReactive = (data, key, val) => {
+  const dep = []
+  Object.defineProperty(data, key, {
+    get: () => {
+      console.log('get')
+      dep.push('baba1')
+      dep.push('baba2')
+      dep.push('baba3')
+      return val
+    },
+    set: (newVal) => {
+      if (newVal === val) {
+        console.log('set1')
+        return
+      } 
+      console.log('set2')
+      val = newVal
+      dep.forEach((item) => {
+        console.log(item + '收到了...')
+      })
+    }
+  })
+}
+
+let obj = {
+  name: ''
+}
+defineReactive(obj, 'name', 'hhvcg')
+console.log(obj.name)
+obj.name = 'asdasda'
+
