@@ -117,7 +117,9 @@ const format = (name, bytes) => {
 }
 // 读取目标路径下的所有文件
 const getFiles = (path) => {
-    return fs.readdirSync(path)
+    return fs.readdirSync(path, (err, data) => {
+        return []
+    })
 
     // fs.readdir(path, (err, data) => {
     //     if (err) {
