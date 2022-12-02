@@ -82,15 +82,25 @@ let xx = '⳧'
 
 // console.log('--->')
 
+class Dep {
+  constructor() {
+    this.subs = []
+  }
+  depend(target) {
+    this.subs.push(target)
+  }
+  notify() {
+    this.subs.forEach((suber) => {
+      suber.update()
+    })
+  }
+}
 
 const defineReactive = (data, key, val) => {
-  const dep = []
+  const dep = new Dep()
   Object.defineProperty(data, key, {
     get: () => {
-      console.log('get')
-      dep.push('baba1')
-      dep.push('baba2')
-      dep.push('baba3')
+      dep.depend('那个谁')
       return val
     },
     set: (newVal) => {
@@ -100,9 +110,7 @@ const defineReactive = (data, key, val) => {
       } 
       console.log('set2')
       val = newVal
-      dep.forEach((item) => {
-        console.log(item + '收到了...')
-      })
+      dep.notify()
     }
   })
 }
