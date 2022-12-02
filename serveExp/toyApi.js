@@ -53,7 +53,7 @@ const TOYS = {
             if (err) {
                 res.send(err)
             } else {
-                const newD = data.split(' ')
+                const newD = data.split('\n' || ' ' || '')
                 console.log('res>>', newD)
                 res.send(newD)
             }
