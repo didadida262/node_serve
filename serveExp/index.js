@@ -70,6 +70,7 @@ app.post('/getVideo', VIDEO.getVideo)
 app.get('/getCates', VIDEO.getCates)
 app.post('/changeFileName', VIDEO.changeFileName)
 app.post('/subMitRecords', TOYS.subMitRecords)
+app.get('/getRecordsList', TOYS.getRecordsList)
 
 // //Binding to localhost://3000
 app.listen(3000,() => {

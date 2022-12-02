@@ -47,6 +47,17 @@ const TOYS = {
                 })
             }
         })
+    },
+    getRecordsList: (req, res) => {
+        fs.readFile('records.txt', 'utf-8', (err, data) => {
+            if (err) {
+                res.send(err)
+            } else {
+                const newD = data.split(' ')
+                console.log('res>>', newD)
+                res.send(newD)
+            }
+        })
     }
 }
 

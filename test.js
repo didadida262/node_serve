@@ -91,7 +91,7 @@ class Dep {
   }
   notify() {
     this.subs.forEach((suber) => {
-      suber.update()
+      console.log(suber + '----收到了')
     })
   }
 }
@@ -100,7 +100,7 @@ const defineReactive = (data, key, val) => {
   const dep = new Dep()
   Object.defineProperty(data, key, {
     get: () => {
-      dep.depend('那个谁')
+      dep.depend('我是watcher' + (Math.random() * 10).toFixed(2))
       return val
     },
     set: (newVal) => {
@@ -116,7 +116,6 @@ const defineReactive = (data, key, val) => {
 }
 
 let obj = {
-  name: ''
 }
 defineReactive(obj, 'name', 'hhvcg')
 console.log(obj.name)
