@@ -130,6 +130,27 @@ const getFiles = (path) => {
     //     }
     // })
 }
+// 统计词频
+const countWords = (paragraph) => {
+    const re = paragraph.match(/\b\w+\b/g)
+    const res = {}
+    re.forEach((item) => {
+      if (!res[item]) {
+        res[item] = 1
+      } else {
+        res[item]++
+      }
+    })
+    const resArr = []
+    Object.keys(res).forEach((key) => {
+      const obj = {}
+      obj.key = key
+      obj.val = res[key]
+      resArr.push(obj)
+    })
+    resArr.sort((a, b) => b.val - a.val)
+    return resArr
+}
   module.exports = {
     crp,
     secretA,
