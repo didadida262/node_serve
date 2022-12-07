@@ -130,7 +130,7 @@ const getFiles = (path) => {
     //     }
     // })
 }
-// 统计词频
+// 输入文本数据，统计词频
 const countWords = (paragraph) => {
     const re = paragraph.match(/\b\w+\b/g)
     const res = {}
@@ -151,6 +151,36 @@ const countWords = (paragraph) => {
     resArr.sort((a, b) => b.val - a.val)
     return resArr
 }
+
+// 数字翻转器，兼容正负数，且自动去0
+const reverseNumber = (x) => {
+    let negFlag = false
+    if (x === 0) {
+      return 0
+    } else if (x < 0) {
+      negFlag = true
+      x = Math.abs(x)
+    }
+    
+    const arrX = String(x).split('')
+    for (let i =0; i < Math.floor(arrX.length / 2); i++) {
+      const temp = arrX[i]
+      arrX[i] = arrX[arrX.length - i - 1]
+      arrX[arrX.length - i - 1] = temp
+    }
+    const startIndex = arrX.findIndex((item) => Number(item) !== 0)
+    let res = arrX.splice(startIndex).join('')
+    console.log(Number(res))
+    if (Number(res) > (Math.pow(2, 31) - 1) || (-Number(res) < -Math.pow(2, 31))) {
+      console.log('越界')
+      return 0
+    }
+    
+    if (negFlag) {
+      res = '-' + res
+    }
+    return res
+}
   module.exports = {
     crp,
     secretA,
@@ -158,5 +188,7 @@ const countWords = (paragraph) => {
     costTime,
     getAllChar,
     secretABack,
-    getFiles
+    getFiles,
+    countWords,
+    reverseNumber
   }
