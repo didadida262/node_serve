@@ -67,6 +67,7 @@ app.get('/getInfo', SIGN.getInfo)
 
 app.post('/getVideosList', VIDEO.getVideosList)
 app.post('/getVideo', VIDEO.getVideo)
+app.get('/getVideoCyberFont', VIDEO.getVideoCyberFont)
 app.get('/getCates', VIDEO.getCates)
 app.post('/changeFileName', VIDEO.changeFileName)
 app.post('/subMitRecords', TOYS.subMitRecords)
