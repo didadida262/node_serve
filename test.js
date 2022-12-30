@@ -82,42 +82,44 @@ let xx = '⳧'
 
 // console.log('--->')
 
-class Dep {
-  constructor() {
-    this.subs = []
-  }
-  depend(target) {
-    this.subs.push(target)
-  }
-  notify() {
-    this.subs.forEach((suber) => {
-      console.log(suber + '----收到了')
-    })
-  }
-}
+// class Dep {
+//   constructor() {
+//     this.subs = []
+//   }
+//   depend(target) {
+//     this.subs.push(target)
+//   }
+//   notify() {
+//     this.subs.forEach((suber) => {
+//       console.log(suber + '----收到了')
+//     })
+//   }
+// }
 
-const defineReactive = (data, key, val) => {
-  const dep = new Dep()
-  Object.defineProperty(data, key, {
-    get: () => {
-      dep.depend('我是watcher' + (Math.random() * 10).toFixed(2))
-      return val
-    },
-    set: (newVal) => {
-      if (newVal === val) {
-        console.log('set1')
-        return
-      } 
-      console.log('set2')
-      val = newVal
-      dep.notify()
-    }
-  })
-}
+// const defineReactive = (data, key, val) => {
+//   const dep = new Dep()
+//   Object.defineProperty(data, key, {
+//     get: () => {
+//       dep.depend('我是watcher' + (Math.random() * 10).toFixed(2))
+//       return val
+//     },
+//     set: (newVal) => {
+//       if (newVal === val) {
+//         console.log('set1')
+//         return
+//       } 
+//       console.log('set2')
+//       val = newVal
+//       dep.notify()
+//     }
+//   })
+// }
 
-let obj = {
-}
-defineReactive(obj, 'name', 'hhvcg')
-console.log(obj.name)
-obj.name = 'asdasda'
+// let obj = {
+// }
+// defineReactive(obj, 'name', 'hhvcg')
+// console.log(obj.name)
+// obj.name = 'asdasda'
 
+const buffer = new ArrayBuffer(12)
+console.log('buffer>>>', buffer)
