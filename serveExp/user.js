@@ -2,6 +2,7 @@ const { crp, secretA } = require('../weapons')
 
 const SIGN = {
     signIn: (req, res) => {
+        console.log('>>>>,',req.body)
         const token = secretA(req.body)
         const data = {
             data: req.body,

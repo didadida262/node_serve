@@ -60,7 +60,6 @@ const VIDEO = {
         })
     },
     getVideo: (req, res) => {
-        console.log('req.body>>', req.bodygetVideogetVideo)
         const header = { 'Content-Type': 'video/mp4' }
         fs.createReadStream(req.body.path)
             .pipe(res)
