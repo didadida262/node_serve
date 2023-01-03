@@ -55,8 +55,8 @@
 
 
 const { getFiles } = require('../weapons')
-const publicPath = 'E:\\theGreatFilms\\RESP'
-// const publicPath = './'
+// const publicPath = 'E:\\theGreatFilms\\RESP'
+const publicPath = './'
 
 
 
