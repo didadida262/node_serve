@@ -74,6 +74,11 @@ app.post('/subMitRecords', TOYS.subMitRecords)
 app.get('/getRecordsList', TOYS.getRecordsList)
 
 // //Binding to localhost://3000
-app.listen(3000,'192.168.0.106',() => {
+// app.listen(3000,'192.168.0.106',() => {
+//     console.log('Express app started at port 3000');
+// });
+
+// comp
+app.listen(3000,() => {
     console.log('Express app started at port 3000');
 });
