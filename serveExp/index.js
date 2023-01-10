@@ -46,6 +46,7 @@
 //app.js
 const { SIGN }  = require('./user')
 const { VIDEO }  = require('./videoApi')
+const { MUSIC }  = require('./musicApi')
 const { TOYS }  = require('./toyApi')
 const Blob = require('blob-polyfill')
 const path = require('path')
@@ -65,6 +66,12 @@ app.post('/signIn', SIGN.signIn)
 app.post('/logOut', SIGN.logOut)
 app.get('/getInfo', SIGN.getInfo)
 
+// music
+app.get('/getMusicCates', MUSIC.getMusicCates)
+app.post('/getSongsList', MUSIC.getSongsList)
+app.post('/getSongData', MUSIC.getSongData)
+
+// 视频
 app.post('/getVideosList', VIDEO.getVideosList)
 app.post('/getVideo', VIDEO.getVideo)
 app.get('/getVideoCyberFont', VIDEO.getVideoCyberFont)

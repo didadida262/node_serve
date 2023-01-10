@@ -68,6 +68,14 @@ const CATEGORIES_N = getFiles(respPath).map((cate) => {
     }
 })
 
+// 获取music文件夹
+const CATEGORIES_music = getFiles(respPath + '\\cate_3').map((cate) => {
+    return {
+        key: cate,
+        path: respPath + '\\cate_3\\' + cate
+    }
+})
+
 const CATEGORIES = CATEGORIES_N.slice(0, CATEGORIES_N.length - 1)
 
 // const CATEGORIES = {
@@ -84,5 +92,6 @@ const CATEGORIES = CATEGORIES_N.slice(0, CATEGORIES_N.length - 1)
 // }
 module.exports = {
     CATEGORIES,
-    respPath
+    respPath,
+    CATEGORIES_music
 }

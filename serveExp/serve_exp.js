@@ -55,12 +55,12 @@ app.get('/users',(req,res)=>{
 
 
 // 获取歌曲列表,默认扫描跟node项目同层级路径下media文件夹中的音频文件
-app.get('/songs/list', (req, res) => {
-  const data = fs.readdirSync(mediaPath).filter((item) => item.includes('.mp3'))
-  songs = [...data]
-  console.log('扫描结果--->', data)
-  res.send(data)
-})
+// app.get('/songs/list', (req, res) => {
+//   const data = fs.readdirSync(mediaPath).filter((item) => item.includes('.mp3'))
+//   songs = [...data]
+//   console.log('扫描结果--->', data)
+//   res.send(data)
+// })
 
 
 
