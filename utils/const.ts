@@ -61,12 +61,14 @@ const respPath = 'E:\\RESP'
 
 
 // 视频目录
-const CATEGORIES = getFiles(respPath).map((cate) => {
+const CATEGORIES_N = getFiles(respPath).map((cate) => {
     return {
         key: cate,
         path: respPath + '\\' + cate
     }
 })
+
+const CATEGORIES = CATEGORIES_N.slice(0, CATEGORIES_N.length - 1)
 
 // const CATEGORIES = {
 //     Mv: {

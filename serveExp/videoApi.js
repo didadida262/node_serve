@@ -24,6 +24,7 @@ const fs = require('fs')
 const { crp, secretABack } = require('../weapons')
 
 const { CATEGORIES } = require('../utils/const.ts')
+const hideRights = [ 'cate_3', 'cate_p', 'cate_g',]
 const VIDEO = {
     getCates: (req, res) => {
         //  req.headers.authorization.slice(7)
@@ -33,9 +34,16 @@ const VIDEO = {
         const userInfo = secretABack(token)
         if (userInfo.username === 'admin') {
             console.log('CATEGORIES', CATEGORIES)
-            res.send(CATEGORIES.slice(0, CATEGORIES.length - 1))
+            res.send(CATEGORIES)
         } else {
-            res.send(CATEGORIES.slice(0, CATEGORIES.length - 4))
+            // 部分权限
+            const da = []
+            CATEGORIES.forEach((item) => {
+                if (hideRights.findIndex((t) => t === item.key) === -1) {
+                    da.push(item)
+                }
+            })
+            res.send(da)
         }
 
     },
