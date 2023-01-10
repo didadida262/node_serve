@@ -35,7 +35,7 @@ const VIDEO = {
             console.log('CATEGORIES', CATEGORIES)
             res.send(CATEGORIES.slice(0, CATEGORIES.length - 1))
         } else {
-            res.send(CATEGORIES.slice(0, CATEGORIES.length - 2))
+            res.send(CATEGORIES.slice(0, CATEGORIES.length - 4))
         }
 
     },

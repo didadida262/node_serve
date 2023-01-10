@@ -55,31 +55,32 @@
 
 
 const { getFiles } = require('../weapons')
-const publicPath = 'E:\\theGreatFilms\\RESP'
-// const publicPath = './'
+const respPath = 'E:\\RESP'
+// const respPath = './'
 
 
 
 // 视频目录
-const CATEGORIES = getFiles(publicPath).map((cate) => {
+const CATEGORIES = getFiles(respPath).map((cate) => {
     return {
         key: cate,
-        path: publicPath + '\\' + cate
+        path: respPath + '\\' + cate
     }
 })
 
 // const CATEGORIES = {
 //     Mv: {
-//         path: publicPath + '音乐\\点歌台\\',
+//         path: respPath + '音乐\\点歌台\\',
 //     },
 //     Time: {
-//         path: publicPath + 'Time\\',
+//         path: respPath + 'Time\\',
 //     },
 //     Interesting: {
-//         path: publicPath + '新建文件夹\\',
+//         path: respPath + '新建文件夹\\',
 //     },
 
 // }
 module.exports = {
-    CATEGORIES
+    CATEGORIES,
+    respPath
 }
