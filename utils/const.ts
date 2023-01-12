@@ -56,7 +56,6 @@
 
 const { getFiles } = require('../weapons')
 const respPath = 'E:\\RESP'
-// const respPath = './'
 
 // 视频目录
 const CATEGORIES_N = getFiles(respPath).map((cate) => {
