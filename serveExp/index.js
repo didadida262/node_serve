@@ -44,6 +44,8 @@
 // app的index，统一引入各个必须模块，按需引入各api文件
 
 //app.js
+const fs = require('fs')
+
 const { SIGN }  = require('./user')
 const { VIDEO }  = require('./videoApi')
 const { MUSIC }  = require('./musicApi')
@@ -56,6 +58,7 @@ const express = require('express'),
 const qs = require('querystring');
 const cors = require('cors');
 const Busboy = require('busboy')
+const req = require('express/lib/request')
 const node_respPath = __dirname.split(path.sep).slice( 0, __dirname.split(path.sep).length - 1).join('\\') + '\\node_resp'
 app.use(cors());
 app.use(express.urlencoded({ extended: false }));
@@ -65,6 +68,19 @@ app.use(express.json());
 app.post('/signIn', SIGN.signIn)
 app.post('/logOut', SIGN.logOut)
 app.get('/getInfo', SIGN.getInfo)
+
+// 获取测试图片
+app.get('/getTestImg', (req, res) => {
+    fs.readFile('../assets/mody.jpg', 'binary', (err, data) => {
+        if (err) {
+            throw err
+        } else {
+            res.write(data, 'binary')
+            res.end()
+        }
+        
+    })
+})
 
 // music
 app.get('/getMusicCates', MUSIC.getMusicCates)
