@@ -121,5 +121,13 @@ let xx = '⳧'
 // console.log(obj.name)
 // obj.name = 'asdasda'
 
-const buffer = new ArrayBuffer(12)
-console.log('buffer>>>', buffer)
+
+
+const reducer = function(sum, item) {
+  return sum + item
+}
+
+
+const arr = [1,2,3,4,5]
+const res = arr.reduce(reducer, 0)
+console.log('res>>>',res)
