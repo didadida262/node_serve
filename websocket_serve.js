@@ -25,7 +25,7 @@ const server = ws.createServer((connect)=>{
     connect.on('text',data=>{
         console.log('接收客户端数据---->', data)
         // 给所有用户发送消息
-        broadcast(server,data+"--返回数据")
+        broadcast(server, data)
     })
     // 连接断开，触发事件close
     connect.on('close',()=>{
@@ -42,7 +42,7 @@ const server = ws.createServer((connect)=>{
 
 // 给所有人发消息
 function broadcast(server,msg){
-    server.connections.forEach(element => {
-        element.send(msg)
+    server.connections.forEach(user => {
+        user.send(msg)
     });
 }
