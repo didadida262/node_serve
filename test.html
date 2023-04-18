@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <button id="add" @click="() => {count++}">+</button>
+        <button id="sub" @click="() => {count--}">-</button>
+        <span id="count">{{ count }}</span>
+    </div>
+</body>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<script>
+
+  const { createApp } = Vue
+  
+  createApp({
+    data() {
+      return {
+        count: 0
+      }
+    }
+  }).mount('#app')
+</script>
+</html>
