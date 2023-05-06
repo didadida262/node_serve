@@ -30,6 +30,8 @@ module.exports = {
     script : "./serveExp/index.js",
     watch: true,
     // 故障自动重启
-    stop_exit_codes: [0]
+    stop_exit_codes: [0],
+    // max 意味着 PM2 将自动检测可用 CPU 的数量并运行尽可能多的进程
+    instances : "max",
   }]
 }
