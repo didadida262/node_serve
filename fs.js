@@ -60,6 +60,7 @@ console.log(videoPath)
 //     if (err) {
 //         console.log('err!', err)
 //     } else {
+    // isDirectory
 //         if (stats.isFile()) {
 //             // console.log('Is File')
 //             return false
@@ -78,9 +79,16 @@ const getAllFile = (curPath) => {
     return dirs
 }
 
-
+// 流失写入
+const fileWriteStream = () => {
+    const ws = fs.createWriteStream('./有感.txt')
+    ws.write('cao ni ma')
+    ws.write('cao ni niaaa')
+    ws.end()
+}
 module.exports = {
-    getAllFile
+    getAllFile,
+    fileWriteStream
 }
 
 

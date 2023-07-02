@@ -6,6 +6,8 @@
 
 const User = require('../models/User');
 
+
+
 app.get('/users',function(req, res){
   var params = qs.parse(req.url.split('?')[1]);
   var fn = params.callback;

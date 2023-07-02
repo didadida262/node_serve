@@ -60,9 +60,17 @@ const cors = require('cors');
 const Busboy = require('busboy')
 const req = require('express/lib/request')
 const node_respPath = __dirname.split(path.sep).slice( 0, __dirname.split(path.sep).length - 1).join('\\') + '\\node_resp'
+
+const testMiddle = (req, res, next) => {
+    console.log('中间拦截>>>')
+    console.log('req>>>', req.body)
+    next()    
+}
+
 app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
+app.use(testMiddle)
 
 
 app.post('/signIn', SIGN.signIn)

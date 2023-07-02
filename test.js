@@ -1,4 +1,3 @@
-const  { getAllFile } = require('./fs.js')
+const  { getAllFile, fileWriteStream } = require('./fs.js')
+fileWriteStream()
 
-const allFiles = getAllFile(__dirname)
-console.log('allFiles>>', allFiles)
