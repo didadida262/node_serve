@@ -1,9 +1,4 @@
-/*
- * @Author: Hhvcg
- * @Date: 2022-02-28 10:07:23
- * @LastEditors: -_-
- * @Description: 文件扫描器
- */
+
 const fs = require('fs')
 const path = require('path')
 const videoPath = 'F:\\Public_disk\\' + 'the great films' + '\\Time'
@@ -76,18 +71,20 @@ console.log(videoPath)
 // })
 
 
+// 获取所有儿子文件
+const getAllFile = (curPath) => {
+    const absPath = path.join(curPath)
+    const dirs = fs.readdirSync(absPath)
+    return dirs
+}
 
-const mediaPath = path.join(__dirname)
 
-// console.log('mediaPath---->', mediaPath.substr(0, mediaPath.length - 11) + '\\media')
+module.exports = {
+    getAllFile
+}
 
-module.exports.name = 'name'
-// console.log('module---->',module)
-// console.log('exports---->',exports)
-// console.log('required---->',require)
 
-// console.log('file', __filename)
-// console.log('__dirname', __dirname)
+
 
 
 

@@ -181,6 +181,7 @@ const reverseNumber = (x) => {
     }
     return res
 }
+
   module.exports = {
     crp,
     secretA,
