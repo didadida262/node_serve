@@ -94,7 +94,7 @@ app.post('/getSongsList', MUSIC.getSongsList)
 app.post('/getSongData', MUSIC.getSongData)
 
 // 视频
-app.post('/getVideosList', VIDEO.getVideosList)
+app.post('/getVideosList',loginMiddle,  VIDEO.getVideosList)
 app.post('/getVideo', VIDEO.getVideo)
 app.get('/getVideoCyberFont', VIDEO.getVideoCyberFont)
 app.get('/getCates', VIDEO.getCates)

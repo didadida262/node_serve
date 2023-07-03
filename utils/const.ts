@@ -24,7 +24,7 @@ const { getFiles } = require('../weapons')
 const respPath = 'E:\\RESP'
 
 // 视频目录
-const CATEGORIES_N = getFiles(respPath).map((cate) => {
+const CATEGORIES_A = getFiles(respPath).map((cate) => {
     return {
         key: cate,
         path: respPath + '\\' + cate
@@ -39,7 +39,7 @@ const CATEGORIES_music = getFiles(respPath + '\\cate_3').map((cate) => {
     }
 })
 
-const CATEGORIES = CATEGORIES_N.slice(0, CATEGORIES_N.length - 1)
+const CATEGORIES = [...CATEGORIES_A]
 
 // const CATEGORIES = {
 //     Mv: {
