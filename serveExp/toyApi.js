@@ -30,7 +30,7 @@
  */
 
 const fs = require('fs')
-const { crp, secretABack } = require('../weapons')
+const { crp, secretABack } = require('./utils/weapons')
 
 const TOYS = {
     subMitRecords: (req, res) => {

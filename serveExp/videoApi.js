@@ -21,7 +21,7 @@
  */
 
 const fs = require('fs')
-const { crp, secretABack } = require('../weapons')
+const { crp, secretABack } = require('./utils/weapons')
 
 const { CATEGORIES } = require('../utils/const.ts')
 const hideRights = [ 'cate_3', 'cate_p', 'cate_g',]

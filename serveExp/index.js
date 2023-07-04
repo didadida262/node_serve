@@ -47,11 +47,9 @@
 const fs = require('fs')
 
 
-const { loginMiddle } = require('./middle')
-const { SIGN }  = require('./user')
-const { VIDEO }  = require('./videoApi')
-const { MUSIC }  = require('./musicApi')
-const { TOYS }  = require('./toyApi')
+// const { VIDEO }  = require('./videoApi')
+// const { MUSIC }  = require('./musicApi')
+// const { TOYS }  = require('./toyApi')
 const Blob = require('blob-polyfill')
 const path = require('path')
 const express = require('express'),
@@ -63,17 +61,14 @@ const Busboy = require('busboy')
 const req = require('express/lib/request')
 const node_respPath = __dirname.split(path.sep).slice( 0, __dirname.split(path.sep).length - 1).join('\\') + '\\node_resp'
 
-
-
+const loginRouter = require('./Routes/login')
 app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-app.use(loginMiddle)
+
+app.use(loginRouter)
 
 
-app.post('/signIn', SIGN.signIn)
-app.post('/logOut', SIGN.logOut)
-app.get('/getInfo', SIGN.getInfo)
 
 // 获取测试图片
 app.get('/getTestImg', (req, res) => {
@@ -88,19 +83,19 @@ app.get('/getTestImg', (req, res) => {
     })
 })
 
-// music
-app.get('/getMusicCates', MUSIC.getMusicCates)
-app.post('/getSongsList', MUSIC.getSongsList)
-app.post('/getSongData', MUSIC.getSongData)
+// // music
+// app.get('/getMusicCates', MUSIC.getMusicCates)
+// app.post('/getSongsList', MUSIC.getSongsList)
+// app.post('/getSongData', MUSIC.getSongData)
 
-// 视频
-app.post('/getVideosList',loginMiddle,  VIDEO.getVideosList)
-app.post('/getVideo', VIDEO.getVideo)
-app.get('/getVideoCyberFont', VIDEO.getVideoCyberFont)
-app.get('/getCates', VIDEO.getCates)
-app.post('/changeFileName', VIDEO.changeFileName)
-app.post('/subMitRecords', TOYS.subMitRecords)
-app.get('/getRecordsList', TOYS.getRecordsList)
+// // 视频
+// app.post('/getVideosList',loginMiddle,  VIDEO.getVideosList)
+// app.post('/getVideo', VIDEO.getVideo)
+// app.get('/getVideoCyberFont', VIDEO.getVideoCyberFont)
+// app.get('/getCates', VIDEO.getCates)
+// app.post('/changeFileName', VIDEO.changeFileName)
+// app.post('/subMitRecords', TOYS.subMitRecords)
+// app.get('/getRecordsList', TOYS.getRecordsList)
 
 // //Binding to localhost://3000
 // app.listen(3000,'192.168.0.106',() => {
