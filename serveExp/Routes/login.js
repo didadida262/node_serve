@@ -11,7 +11,6 @@ router.post('/signIn', (req, res) => {
         data: req.body,
         token: token,
         code: 200,
-        dd: 'asdasd'
     }
     res.send(data);
 })

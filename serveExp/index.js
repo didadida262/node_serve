@@ -62,11 +62,13 @@ const req = require('express/lib/request')
 const node_respPath = __dirname.split(path.sep).slice( 0, __dirname.split(path.sep).length - 1).join('\\') + '\\node_resp'
 
 const loginRouter = require('./Routes/login')
+const videoRouter = require('./Routes/video')
 app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 app.use(loginRouter)
+app.use(videoRouter)
 
 
 
@@ -88,14 +90,6 @@ app.get('/getTestImg', (req, res) => {
 // app.post('/getSongsList', MUSIC.getSongsList)
 // app.post('/getSongData', MUSIC.getSongData)
 
-// // 视频
-// app.post('/getVideosList',loginMiddle,  VIDEO.getVideosList)
-// app.post('/getVideo', VIDEO.getVideo)
-// app.get('/getVideoCyberFont', VIDEO.getVideoCyberFont)
-// app.get('/getCates', VIDEO.getCates)
-// app.post('/changeFileName', VIDEO.changeFileName)
-// app.post('/subMitRecords', TOYS.subMitRecords)
-// app.get('/getRecordsList', TOYS.getRecordsList)
 
 // //Binding to localhost://3000
 // app.listen(3000,'192.168.0.106',() => {

@@ -23,55 +23,10 @@
 const fs = require('fs')
 const { crp, secretABack } = require('./utils/weapons')
 
-const { CATEGORIES } = require('../utils/const.ts')
-const hideRights = [ 'cate_3', 'cate_p', 'cate_g',]
+const { CATEGORIES } = require('./utils/const')
 const VIDEO = {
-    getCates: (req, res) => {
-        //  req.headers.authorization.slice(7)
-        // rawHeaders
 
-        const token = req.headers['x-token']
-        const userInfo = secretABack(token)
-        if (userInfo.username === 'admin') {
-            console.log('CATEGORIES', CATEGORIES)
-            res.send(CATEGORIES)
-        } else {
-            // 部分权限
-            const da = []
-            CATEGORIES.forEach((item) => {
-                if (hideRights.findIndex((t) => t === item.key) === -1) {
-                    da.push(item)
-                }
-            })
-            res.send(da)
-        }
 
-    },
-    // 返回目标类别的videos列表数据
-    getVideosList: (req, res) => {
-        fs.readdir(req.body.currentCate.path, (err, data) => {
-            if (err) {
-                res.sendStatus(404)
-            } else {
-                let videosList = []
-                data.forEach((item, index) => {
-                    let obj = {
-                        id: index,
-                        name: item,
-                        path: req.body.currentCate.path + '\\' + item,
-                        dirPath: req.body.currentCate.path
-                    }
-                    videosList.push(obj)
-                })
-                res.send(videosList)
-            }
-        })
-    },
-    getVideo: (req, res) => {
-        const header = { 'Content-Type': 'video/mp4' }
-        fs.createReadStream(req.body.path)
-            .pipe(res)
-    },
     getVideoCyberFont: (req, res) => {
         console.log('req.body>>', req.bodygetVideogetVideo)
         const header = { 'Content-Type': 'video/mp4' }
