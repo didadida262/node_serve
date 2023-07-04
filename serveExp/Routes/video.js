@@ -60,10 +60,14 @@ router.post('/changeFileName', (req, res) => {
         }
     })
 })
+router.get('./getVideoCyberFont', (req, res) => {
+    // const header = { 'Content-Type': 'video/mp4' }
+    fs.createReadStream('../public/清帝逊位.mp4')
+        .pipe(res)
+})
 
 
 
-// app.get('/getVideoCyberFont', VIDEO.getVideoCyberFont)
 // app.post('/subMitRecords', TOYS.subMitRecords)
 // app.get('/getRecordsList', TOYS.getRecordsList)
 

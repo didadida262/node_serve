@@ -63,12 +63,14 @@ const node_respPath = __dirname.split(path.sep).slice( 0, __dirname.split(path.s
 
 const loginRouter = require('./Routes/login')
 const videoRouter = require('./Routes/video')
+const musicRouter = require('./Routes/music')
 app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 app.use(loginRouter)
 app.use(videoRouter)
+app.use(musicRouter)
 
 
 
@@ -85,10 +87,7 @@ app.get('/getTestImg', (req, res) => {
     })
 })
 
-// // music
-// app.get('/getMusicCates', MUSIC.getMusicCates)
-// app.post('/getSongsList', MUSIC.getSongsList)
-// app.post('/getSongData', MUSIC.getSongData)
+
 
 
 // //Binding to localhost://3000
