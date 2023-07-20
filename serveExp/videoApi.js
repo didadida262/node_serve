@@ -16,7 +16,7 @@
  * 
  * @Author: Hhvcg
  * @Date: 2022-10-23 14:27:49
- * @LastEditors: -_-
+ * @LastEditors: Hhvcg
  * @Description: 
  */
 
@@ -75,8 +75,19 @@ const VIDEO = {
     getVideoCyberFont: (req, res) => {
         console.log('req.body>>', req.bodygetVideogetVideo)
         const header = { 'Content-Type': 'video/mp4' }
-        fs.createReadStream('./清帝逊位.mp4')
-            .pipe(res)
+        // fs.createReadStream('./清帝逊位.mp4')
+        // // fs.createReadStream('./big_data.mp4')
+        //     .pipe(res)
+          // 每次读取一块数据并发送给前端
+          const videoStream = fs.createReadStream('./big_data.mp4')
+        videoStream.on('data', (chunk) => {
+            res.write(chunk);
+        });
+
+        // 读取完成后关闭响应
+        videoStream.on('end', () => {
+            res.end();
+        });
     },
     changeFileName: (req, res) => {
         const oldPath = req.body.path

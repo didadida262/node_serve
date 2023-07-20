@@ -11,7 +11,7 @@
  * 
  * @Author: Hhvcg
  * @Date: 2022-02-28 10:07:23
- * @LastEditors: -_-
+ * @LastEditors: Hhvcg
  * @Description: 
  */
 
@@ -36,7 +36,7 @@ const server = ws.createServer((connect)=>{
         console.log('err', err)
     })
 
-}).listen(3001,()=>{
+}).listen(3002,()=>{
     console.log('websocket服务启动成功了')
 })
 
