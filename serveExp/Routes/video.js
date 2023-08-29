@@ -84,15 +84,31 @@ router.get('/testVideo', (req, res) => {
 })
 router.get('/getStreamVideo', (req, res) => {
     const myobj = url.parse(req.url,true);
-    console.log('myobj>>>>>', myobj)
-    console.log('query>>>>>', myobj.query)
-
     const id = myobj.query.id || 3;
     const path = `E:\\RESP\\cate_p\\${id}.mp4`
+
+
+
+    //2. pipe方案
+    // const file = fs.createReadStream(path);
+    // file.pipe(res);
+
+
+    //3.  readTream方案
     const readStream = fs.ReadStream(path)
+    let data = Buffer(0)
+    let length = 0
+    let i = 0
     readStream.on('data', (chunk) => {
-        // console.log('chunk>>>',chunk)
-        res.write(chunk)
+        console.log('data>>>>')
+        length += chunk.length
+        data = Buffer.concat([data, chunk], length)
+        // console.log('chunk>>>', chunk)
+        // if (length >= 65536 * 10) {
+        //     console.log('发送数据>>')
+            res.write(chunk)
+        // }
+        // i++
     })
     readStream.on('close', () => {
         res.end()
