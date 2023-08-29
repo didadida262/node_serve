@@ -18,7 +18,7 @@
  * @LastEditors: Hhvcg
  */
 
-
+const path = require('path')
 
 const { getFiles } = require('./weapons')
 const respPath = 'E:\\RESP'
@@ -27,15 +27,16 @@ const respPath = 'E:\\RESP'
 const CATEGORIES_A = getFiles(respPath).map((cate) => {
     return {
         key: cate,
-        path: respPath + '\\' + cate
+        // path: respPath + '\\' + cate
+        path: path.join(respPath, cate)
     }
 })
 
 // 获取music文件夹
-const CATEGORIES_music = getFiles(respPath + '\\cate_3').map((cate) => {
+const CATEGORIES_music = getFiles(respPath).map((cate) => {
     return {
         key: cate,
-        path: respPath + '\\cate_3\\' + cate
+        path: path.join(respPath, cate)
     }
 })
 

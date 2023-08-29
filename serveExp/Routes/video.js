@@ -1,6 +1,7 @@
 // 视频路由
 
 const fs = require('fs')
+const url = require('url')
 const { crp, secretABack } = require('../utils/weapons')
 const { CATEGORIES, hideRights } = require('../utils/const')
 
@@ -44,8 +45,58 @@ router.post('/getVideosList', (req, res) => {
 })
 router.post('/getVideo', (req, res) => {
     // const header = { 'Content-Type': 'video/mp4' }
-    fs.createReadStream(req.body.path)
-        .pipe(res)
+    const readStream = fs.ReadStream(req.body.path)
+    readStream.on('data', (chunk) => {
+        console.log('chunk>>>',chunk)
+        res.write(chunk)
+    })
+    // readStream.pipe(res)
+    readStream.on('close', () => {
+        console.log('finished!!!!')
+        res.end()
+    })
+    // fs.createReadStream(req.body.path)
+    //     .pipe(res)
+})
+router.get('/testVideo', (req, res) => {
+    const request = url.parse(req.url, true);
+    console.log('request>>>>>', request)
+    // const path = 'E:\\RESP\\cate_g\\中日雙字昭和維新之歌轉載.mp4'
+    // const path = 'E:\\RESP\\cate_g\\【林瀾對話】囚聲 _ 上海回憶錄 _ #新唐人電視台.mp4'
+    const path = 'E:\\RESP\\cate_p\\18.mp4'
+    // var time = new Date();
+    // res.writeHead(200, {'Content-Type': 'video/mp4'});
+    // var rs = fs.createReadStream(path + 'test' + '.mp4');
+    // rs.pipe(res);
+    // rs.on('end', function () {
+    //     res.end();
+    //     console.log('end call');
+    // });
+    // 旧方案
+    const readStream = fs.ReadStream(path)
+    readStream.on('data', (chunk) => {
+        console.log('chunk>>>',chunk)
+        res.write(chunk)
+    })
+    readStream.on('close', () => {
+        res.end()
+    })
+})
+router.get('/getStreamVideo', (req, res) => {
+    const myobj = url.parse(req.url,true);
+    console.log('myobj>>>>>', myobj)
+    console.log('query>>>>>', myobj.query)
+
+    const id = myobj.query.id || 3;
+    const path = `E:\\RESP\\cate_p\\${id}.mp4`
+    const readStream = fs.ReadStream(path)
+    readStream.on('data', (chunk) => {
+        // console.log('chunk>>>',chunk)
+        res.write(chunk)
+    })
+    readStream.on('close', () => {
+        res.end()
+    })
 })
 router.post('/changeFileName', (req, res) => {
     const oldPath = req.body.path
