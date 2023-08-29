@@ -11,8 +11,8 @@
  * 
  * @Author: Hhvcg
  * @Date: 2022-02-28 10:07:23
- * @LastEditors: -_-
- * @Description: 
+ * @LastEditors: Hhvcg
+ * @Description: websocket服务端
  */
 
 // 引入插件
@@ -36,7 +36,7 @@ const server = ws.createServer((connect)=>{
         console.log('err', err)
     })
 
-}).listen(3001,()=>{
+}).listen(3002,()=>{
     console.log('websocket服务启动成功了')
 })
 
