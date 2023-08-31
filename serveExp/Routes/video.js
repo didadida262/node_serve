@@ -75,7 +75,7 @@ router.get('/testVideo', (req, res) => {
     // 旧方案
     const readStream = fs.ReadStream(path)
     readStream.on('data', (chunk) => {
-        console.log('chunk>>>',chunk)
+        // console.log('chunk>>>',chunk)
         res.write(chunk)
     })
     readStream.on('close', () => {

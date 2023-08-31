@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "blob-polyfill": "^7.0.20220408",
+    "busboy": "^1.6.0",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "node-fetch": "^2.6.0"
+  }
+}
