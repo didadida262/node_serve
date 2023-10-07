@@ -94,7 +94,7 @@ app.get('/getTestImg', (req, res) => {
 // app.listen(3000,'192.168.0.106',() => {
 //     console.log('Express app started at port 3000');
 // });
-app.listen(3000,() => {
+app.listen(3001,() => {
     console.log('Express app started at port 3000');
 
 });
