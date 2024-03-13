@@ -40,17 +40,7 @@
  */
 
 
-// node模块标准为commonjs
-// app的index，统一引入各个必须模块，按需引入各api文件
-
-//app.js
 const fs = require('fs')
-
-
-// const { VIDEO }  = require('./videoApi')
-// const { MUSIC }  = require('./musicApi')
-// const { TOYS }  = require('./toyApi')
-const Blob = require('blob-polyfill')
 const path = require('path')
 const express = require('express'),
       app = express(),
@@ -62,15 +52,15 @@ const req = require('express/lib/request')
 const node_respPath = __dirname.split(path.sep).slice( 0, __dirname.split(path.sep).length - 1).join('\\') + '\\node_resp'
 
 const loginRouter = require('./Routes/login')
-const videoRouter = require('./Routes/video')
-const musicRouter = require('./Routes/music')
+// const videoRouter = require('./Routes/video')
+// const musicRouter = require('./Routes/music')
 app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 app.use(loginRouter)
-app.use(videoRouter)
-app.use(musicRouter)
+// app.use(videoRouter)
+// app.use(musicRouter)
 
 
 
