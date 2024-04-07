@@ -62,8 +62,6 @@ app.use(loginRouter)
 // app.use(videoRouter)
 // app.use(musicRouter)
 
-
-
 // 获取测试图片
 app.get('/getTestImg', (req, res) => {
     fs.readFile('../assets/mody.jpg', 'binary', (err, data) => {
@@ -76,9 +74,6 @@ app.get('/getTestImg', (req, res) => {
         
     })
 })
-
-
-
 
 // //Binding to localhost://3000
 // app.listen(3000,'192.168.0.106',() => {
