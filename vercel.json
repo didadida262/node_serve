@@ -2,8 +2,10 @@
   "version": 2,
   "builds": [
     {
-      "src": "serve_exp.js",
+      "src": "serveExp/common_serve/index.js",
       "use": "@vercel/node"
     }
-  ]
+  ],
+
+  "routes": [{ "src": "(.*)", "dest": "index.js" }]
 }
